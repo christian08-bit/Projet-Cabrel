@@ -20,25 +20,43 @@ géolocalisation assistée, document officiel PDF et QR code.
 
 `findMe` est le frontend d'un service **Address-as-a-Service (AaaS)** : chaque adresse
 créée devient une unité exploitable par les plateformes de livraison, les services
-d'urgence et les institutions financières. Le projet répond au cahier des charges
-DHI Academy — *Projet 4, Développeur Full Stack* (Mai 2026).
+d'urgence et les institutions financières. Réponse au cahier des charges DHI Academy —
+*Projet 4, Développeur Full Stack* (Mai 2026).
 
-**Objectifs produit :** mobile-first, rapide, accessible (WCAG AA), optimisé SEO,
-orienté conversion, et prêt pour une démonstration investisseur.
+## ✨ Fonctionnalités
 
-## 🧱 Stack technique & choix
+- 🔐 **Authentification** — inscription, connexion, mot de passe oublié / réinitialisation, validation **en temps réel**, protection des routes (middlewares), session par cookie sécurisé SSR.
+- 📍 **Gestion d'adresses (CRUD)** — max 4/utilisateur, unicité, formulaire **stepper** en 3 étapes, **brouillon auto-sauvegardé**.
+- 🗺️ **Carte interactive (Leaflet)** — géolocalisation navigateur + marqueur déplaçable, aperçu temps réel.
+- 🖼️ **Upload photo** — aperçu immédiat + **compression côté client** (canvas) avant envoi.
+- 📄 **Export PDF + QR code** — document officiel propre généré côté client (jsPDF).
+- 🛠️ **Dashboard admin** — KPIs, listes paginées (utilisateurs, adresses) avec recherche/filtres, boîte de réception support (statut traité/non traité).
+- 💬 **Support client** — formulaire de contact validé.
+- 🌍 **Multilingue FR/EN** — changement instantané, persisté, hreflang SEO.
+- 🌗 **Thème clair/sombre** — détection système + persistance, sans flash.
+- ♿ **Accessibilité** — ARIA, navigation clavier, focus visible, contrastes WCAG AA.
+- 🚀 **SEO & performance** — SSR, sitemap, JSON-LD, lazy loading, code splitting.
+
+### 🔑 Comptes de démonstration
+
+| Rôle | Email | Mot de passe |
+| --- | --- | --- |
+| Utilisateur | `demo@findme.africa` | `Demo1234` |
+| Administrateur | `admin@findme.africa` | `Admin123` |
+
+## 🧱 Stack & choix techniques
 
 | Domaine | Choix | Pourquoi |
 | --- | --- | --- |
-| Framework | **Nuxt 4 / Vue 3** | SSR natif (SEO), file-based routing, DX, code-splitting automatique |
-| Styling | **Tailwind CSS v4** (config CSS-first) | Les tokens de la charte sont déclarés en `@theme` → utilitaires cohérents, zéro valeur magique |
-| État | **Pinia** | Store modulaire, SSR-safe, typé |
-| i18n | **@nuxtjs/i18n** | FR/EN, changement instantané, persistance cookie, hreflang SEO |
-| Thème | **@nuxtjs/color-mode** | Clair / sombre via classe `.dark`, persisté, sans flash |
-| Icônes | **@nuxt/icon** + Lucide (local) | Rendu SSR sans appel réseau |
-| Images | **@nuxt/image** | Optimisation, lazy loading, formats modernes |
-| Fonts | **@nuxt/fonts** | Auto-hébergement (Plus Jakarta Sans, Inter, JetBrains Mono) → perf |
-| Utilitaires | **@vueuse/nuxt** | Géolocalisation, storage, composables réactifs |
+| Framework | **Nuxt 4 / Vue 3** | SSR (SEO), file-based routing, code-splitting auto |
+| Styling | **Tailwind CSS v4** (CSS-first `@theme`) | Tokens de la charte → utilitaires cohérents |
+| État | **Pinia** | Stores modulaires typés, SSR-safe |
+| Backend simulé | **Nitro server routes** (`server/`) | Mock server sans dépendance externe (L4) |
+| i18n | **@nuxtjs/i18n** | FR/EN, persistance, hreflang |
+| Thème | **@nuxtjs/color-mode** | Dark mode classe `.dark`, persisté |
+| Carte | **Leaflet** + OpenStreetMap | Sans clé API, adapté à l'Afrique |
+| PDF / QR | **jsPDF** + **qrcode** | Import dynamique (hors bundle initial) |
+| Utils | **@vueuse/nuxt** | Géolocalisation, storage, debounce |
 
 ## 📂 Structure du projet
 
@@ -46,18 +64,19 @@ orienté conversion, et prêt pour une démonstration investisseur.
 findme/
 ├── app/
 │   ├── assets/css/main.css      # Design system (tokens @theme + dark mode)
-│   ├── components/
-│   │   ├── ui/                   # Composants atomiques (Button, Input, Card, …)
-│   │   └── layout/               # Header, Footer, ThemeToggle, LangSwitcher
-│   ├── composables/             # Logique réutilisable (à venir : géoloc, validation)
-│   ├── layouts/                 # default (public) · auth · admin
-│   ├── middleware/              # Protection des routes (S2)
-│   ├── pages/                   # Routing fichier → URL
-│   ├── stores/                  # Pinia (auth, addresses…)
-│   └── types/                   # Modèle de domaine TypeScript
+│   ├── components/{ui,layout,address,admin}/
+│   ├── composables/             # geolocate, image-compression, pdf
+│   ├── layouts/                 # default · auth · admin
+│   ├── middleware/              # auth · guest · admin
+│   ├── pages/                   # routing fichier → URL
+│   ├── plugins/                 # api ($fetch) · auth.init (hydratation SSR)
+│   ├── stores/                  # auth · addresses · toast
+│   ├── types/                   # modèle de domaine
+│   └── utils/                   # validators · apiError · locations
+├── server/                      # Mock server Nitro (api/, routes/, utils/)
 ├── i18n/locales/                # fr.json · en.json
-├── public/                      # Assets statiques
-└── nuxt.config.ts               # Modules, SEO, i18n, dark mode
+├── docs/                        # API.md (L3) · PERFORMANCE.md (L5)
+└── nuxt.config.ts
 ```
 
 ## 🚀 Démarrage
@@ -65,37 +84,34 @@ findme/
 Prérequis : **Node ≥ 20**, npm.
 
 ```bash
-npm install      # installe les dépendances
-npm run dev      # serveur de dev → http://localhost:3000
-npm run build    # build de production (SSR)
-npm run preview  # prévisualise le build
+npm install
+npm run dev          # http://localhost:3000
 ```
 
-## 🎨 Design system
+> ⚠️ Si le port 3000 est occupé : `npm run dev -- --port 3100`
 
-Le design system est porté 1:1 depuis la charte graphique
-(`../03_Charte_Graphique`). Tous les tokens (couleurs WCAG, typographie, espacement,
-rayons, ombres) vivent dans `app/assets/css/main.css` sous `@theme` et deviennent
-des utilitaires Tailwind :
-
-```html
-<button class="bg-brand-500 text-white rounded-lg shadow-brand">…</button>
-<p class="text-text-muted">…</p>      <!-- s'adapte au dark mode -->
+```bash
+npm run build        # build de production (SSR)
+npm run preview      # prévisualise le build
 ```
 
-## 🗺️ Roadmap (4 semaines)
+## 📡 API (mock server)
 
-- [x] **S1 — Architecture & UI Foundation** : setup Nuxt 4, design system, layouts, routing, composants de base
-- [ ] **S2 — Authentification & Landing** : signup/signin/reset, validation temps réel, gestion d'état, landing conversion
-- [ ] **S3 — Core Features** : CRUD adresses, carte interactive, upload image, export PDF + QR
-- [ ] **S4 — Admin, Qualité & Optimisation** : dashboard admin, filtres, SEO, audit Lighthouse
+Tous les endpoints (`/api/**`) sont documentés dans **[docs/API.md](./docs/API.md)** :
+auth, adresses (CRUD), support, admin — avec schémas, codes d'erreur et règles métier.
+Aucun backend réel n'est requis : les données sont seedées en mémoire au démarrage.
 
-## ♿ Accessibilité & performance
+## 🧪 Qualité & performance
 
-- Navigation clavier complète, lien d'évitement, focus visible, attributs ARIA
-- Contrastes WCAG AA vérifiés (cf. charte)
-- `prefers-reduced-motion` respecté
-- SSR + lazy loading + code splitting + fonts auto-hébergées
+Voir **[docs/PERFORMANCE.md](./docs/PERFORMANCE.md)** pour les optimisations (SSR, lazy
+loading, SEO, a11y) et la procédure d'audit Lighthouse.
+
+## 🗺️ Roadmap (4 semaines) — ✅ terminé
+
+- [x] **S1 — Architecture & UI Foundation** : Nuxt 4, design system, layouts, routing, composants
+- [x] **S2 — Authentification & Landing** : flows complets, validation temps réel, gestion d'état, landing conversion
+- [x] **S3 — Core Features** : CRUD adresses, carte interactive, upload image, export PDF + QR
+- [x] **S4 — Admin, Qualité & Optimisation** : dashboard admin, filtres, SEO, optimisations
 
 ---
 

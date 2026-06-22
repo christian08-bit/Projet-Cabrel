@@ -21,11 +21,14 @@ npm install
 npm run dev   # http://localhost:3000
 ```
 
-## Avancement
+## Avancement — ✅ application complète et fonctionnelle
 
 - ✅ **Semaine 1 — Architecture & UI Foundation**
-- ⏳ Semaine 2 — Authentification & Landing
-- ⏳ Semaine 3 — Core Features (CRUD, carte, PDF)
-- ⏳ Semaine 4 — Admin, Qualité & Optimisation
+- ✅ **Semaine 2 — Authentification & Landing**
+- ✅ **Semaine 3 — Core Features** (CRUD, carte Leaflet, upload + compression, PDF + QR)
+- ✅ **Semaine 4 — Admin, Qualité & Optimisation** (dashboard, filtres, SEO)
 
-Détails techniques et roadmap dans [`findme/README.md`](./findme/README.md).
+Comptes de démo : `demo@findme.africa / Demo1234` · `admin@findme.africa / Admin123`.
+
+Détails techniques, fonctionnalités et API dans [`findme/README.md`](./findme/README.md)
+et [`findme/docs/API.md`](./findme/docs/API.md).
