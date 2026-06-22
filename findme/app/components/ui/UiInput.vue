@@ -16,6 +16,8 @@ const props = withDefaults(
     disabled?: boolean
     autocomplete?: string
     icon?: string
+    datalist?: string[]
+    inputmode?: string
   }>(),
   { type: 'text' },
 )
@@ -50,6 +52,8 @@ const describedBy = computed(() =>
         :required="required"
         :disabled="disabled"
         :autocomplete="autocomplete"
+        :inputmode="inputmode"
+        :list="datalist ? `${uid}-list` : undefined"
         :aria-invalid="!!error || undefined"
         :aria-describedby="describedBy"
         class="block w-full rounded-lg border-[1.5px] bg-surface-card px-4 py-3 text-[0.9375rem] text-text-strong outline-none transition-all duration-200 placeholder:text-ink-400 disabled:cursor-not-allowed disabled:bg-ink-100 focus:border-brand-500 focus:shadow-[0_0_0_3px_rgba(22,82,240,0.12)]"
@@ -64,6 +68,9 @@ const describedBy = computed(() =>
         @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
         @blur="$emit('blur', $event)"
       />
+      <datalist v-if="datalist" :id="`${uid}-list`">
+        <option v-for="opt in datalist" :key="opt" :value="opt" />
+      </datalist>
     </div>
 
     <p v-if="error" :id="`${uid}-err`" class="mt-1.5 flex items-center gap-1 text-[0.8125rem] text-error-600">

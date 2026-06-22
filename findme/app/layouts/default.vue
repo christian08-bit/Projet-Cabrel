@@ -16,5 +16,6 @@ const { t } = useI18n()
       <slot />
     </main>
     <AppFooter />
+    <UiToaster />
   </div>
 </template>

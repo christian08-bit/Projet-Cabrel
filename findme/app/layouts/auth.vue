@@ -50,5 +50,6 @@ const localePath = useLocalePath()
         <ThemeToggle />
       </div>
     </main>
+    <UiToaster />
   </div>
 </template>

@@ -53,5 +53,6 @@ const nav = computed(() => [
         <slot />
       </main>
     </div>
+    <UiToaster />
   </div>
 </template>
