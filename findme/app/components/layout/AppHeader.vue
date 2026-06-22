@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const localePath = useLocalePath()
+const auth = useAuthStore()
 const open = ref(false)
 
 const links = computed(() => [
@@ -37,8 +38,11 @@ const links = computed(() => [
       <div class="hidden items-center gap-2 md:flex">
         <LangSwitcher />
         <ThemeToggle />
-        <UiButton :to="localePath('/login')" variant="ghost" size="sm">{{ t('nav.signin') }}</UiButton>
-        <UiButton :to="localePath('/register')" size="sm">{{ t('nav.signup') }}</UiButton>
+        <UserMenu v-if="auth.isAuthenticated" />
+        <template v-else>
+          <UiButton :to="localePath('/login')" variant="ghost" size="sm">{{ t('nav.signin') }}</UiButton>
+          <UiButton :to="localePath('/register')" size="sm">{{ t('nav.signup') }}</UiButton>
+        </template>
       </div>
 
       <!-- Mobile -->
@@ -69,7 +73,28 @@ const links = computed(() => [
         >
           {{ link.label }}
         </NuxtLink>
-        <div class="mt-2 flex items-center justify-between gap-2">
+        <template v-if="auth.isAuthenticated">
+          <NuxtLink
+            :to="localePath('/dashboard')"
+            class="rounded-lg px-3 py-2.5 text-sm font-medium text-text-base hover:bg-surface-muted"
+            @click="open = false"
+          >
+            {{ t('nav.dashboard') }}
+          </NuxtLink>
+          <NuxtLink
+            v-if="auth.isAdmin"
+            :to="localePath('/admin')"
+            class="rounded-lg px-3 py-2.5 text-sm font-medium text-text-base hover:bg-surface-muted"
+            @click="open = false"
+          >
+            {{ t('nav.admin') }}
+          </NuxtLink>
+          <div class="mt-2 flex items-center justify-between gap-2">
+            <LangSwitcher />
+            <UiButton variant="ghost" size="sm" @click="auth.logout()">{{ t('nav.logout') }}</UiButton>
+          </div>
+        </template>
+        <div v-else class="mt-2 flex items-center justify-between gap-2">
           <LangSwitcher />
           <div class="flex flex-1 gap-2">
             <UiButton :to="localePath('/login')" variant="ghost" size="sm" block>{{ t('nav.signin') }}</UiButton>

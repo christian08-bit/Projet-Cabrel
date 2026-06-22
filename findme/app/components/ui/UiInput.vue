@@ -20,7 +20,7 @@ const props = withDefaults(
   { type: 'text' },
 )
 
-defineEmits<{ 'update:modelValue': [value: string] }>()
+defineEmits<{ 'update:modelValue': [value: string]; blur: [event: FocusEvent] }>()
 
 const uid = useId()
 const describedBy = computed(() =>
@@ -62,6 +62,7 @@ const describedBy = computed(() =>
               : 'border-ink-300 hover:border-ink-400',
         ]"
         @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+        @blur="$emit('blur', $event)"
       />
     </div>
 
