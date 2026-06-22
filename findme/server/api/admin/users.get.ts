@@ -5,6 +5,7 @@ export default defineEventHandler((event) => {
   requireAdmin(event)
   const q = getQuery(event)
   const search = String(q.search ?? '').trim().toLowerCase()
+  const country = String(q.country ?? '').trim()
   const city = String(q.city ?? '').trim()
   const page = Math.max(1, Number(q.page) || 1)
   const perPage = 10
@@ -15,6 +16,11 @@ export default defineEventHandler((event) => {
     rows = rows.filter(
       (u) => u.email.toLowerCase().includes(search) || u.fullName.toLowerCase().includes(search),
     )
+  }
+  // Filtres pays / ville : utilisateurs ayant au moins une adresse correspondante.
+  if (country) {
+    const ids = new Set(db.addresses.filter((a) => a.country === country).map((a) => a.userId))
+    rows = rows.filter((u) => ids.has(u.id))
   }
   if (city) {
     const userIds = new Set(db.addresses.filter((a) => a.city === city).map((a) => a.userId))

@@ -20,21 +20,26 @@ interface Res {
 }
 
 const search = ref('')
+const country = ref('')
 const city = ref('')
 const page = ref(1)
 
 const { data, pending, refresh } = await useAsyncData<Res>(
   'admin-users',
-  () => $api('/admin/users', { query: { search: search.value, city: city.value, page: page.value } }),
+  () =>
+    $api('/admin/users', {
+      query: { search: search.value, country: country.value, city: city.value, page: page.value },
+    }),
   { watch: [page] },
 )
 
 // Recherche / filtre : retour à la page 1 puis refetch (avec debounce sur la saisie).
-watchDebounced([search, city], () => { page.value = 1; refresh() }, { debounce: 300 })
+watchDebounced([search, country, city], () => { page.value = 1; refresh() }, { debounce: 300 })
 
+const countryOpts = computed(() => [{ value: '', label: t('common.all') }, ...countryOptions()])
 const cityOptions = computed(() => [
   { value: '', label: t('common.all') },
-  ...citiesFor('Cameroun').map((c) => ({ value: c, label: c })),
+  ...(country.value ? citiesFor(country.value) : citiesFor('Cameroun')).map((c) => ({ value: c, label: c })),
 ])
 const fmtDate = (d: string) => new Date(d).toLocaleDateString(locale.value === 'fr' ? 'fr-FR' : 'en-US')
 </script>
@@ -44,13 +49,12 @@ const fmtDate = (d: string) => new Date(d).toLocaleDateString(locale.value === '
     <h1 class="font-display text-2xl font-bold text-text-strong">{{ t('admin.users.title') }}</h1>
 
     <!-- Filtres -->
-    <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-      <div class="flex-1">
+    <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="sm:col-span-2">
         <UiInput v-model="search" :placeholder="t('admin.users.searchPlaceholder')" icon="lucide:search" />
       </div>
-      <div class="sm:w-56">
-        <UiSelect v-model="city" :options="cityOptions" :placeholder="t('admin.filterCity')" icon="lucide:building-2" />
-      </div>
+      <UiSelect v-model="country" :options="countryOpts" :placeholder="t('admin.filterCountry')" icon="lucide:globe" />
+      <UiSelect v-model="city" :options="cityOptions" :placeholder="t('admin.filterCity')" icon="lucide:building-2" />
     </div>
 
     <UiCard padded class="!p-0 overflow-hidden">

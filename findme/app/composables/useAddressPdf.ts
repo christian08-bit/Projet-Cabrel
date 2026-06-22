@@ -5,6 +5,24 @@ import type { Address } from '~/types'
  * en-tête de marque, adresse formatée, coordonnées, QR code et photo.
  * jsPDF et qrcode sont importés dynamiquement (hors bundle principal).
  */
+/** Récupère une image de carte statique (OSM) centrée sur la position. */
+async function fetchStaticMap(lat: number, lng: number): Promise<string | null> {
+  try {
+    const url = `https://staticmap.openstreetmap.de/staticmap.php?center=${lat},${lng}&zoom=15&size=560x240&maptype=mapnik&markers=${lat},${lng},red-pushpin`
+    const res = await fetch(url)
+    if (!res.ok) return null
+    const blob = await res.blob()
+    return await new Promise((resolve) => {
+      const reader = new FileReader()
+      reader.onload = () => resolve(reader.result as string)
+      reader.onerror = () => resolve(null)
+      reader.readAsDataURL(blob)
+    })
+  } catch {
+    return null
+  }
+}
+
 export function useAddressPdf() {
   async function exportPdf(address: Address) {
     const [{ jsPDF }, QRCode] = await Promise.all([import('jspdf'), import('qrcode')])
@@ -77,19 +95,50 @@ export function useAddressPdf() {
       y += 10
     }
 
-    // Photo du bâtiment
-    if (address.photoUrl?.startsWith('data:image')) {
+    // Plan de localisation (carte) + photo, côte à côte
+    y += 6
+    doc.setTextColor(...muted)
+    doc.setFont('helvetica', 'normal')
+    doc.setFontSize(8)
+    doc.text('PLAN DE LOCALISATION', 16, y)
+    const mapY = y + 3
+
+    function drawSchematicMap() {
+      // Repli sans réseau : fond + grille + marqueur.
+      doc.setFillColor(235, 242, 255)
+      doc.roundedRect(16, mapY, 110, 50, 2, 2, 'F')
+      doc.setDrawColor(210, 224, 248)
+      doc.setLineWidth(0.2)
+      for (let gx = 28; gx < 126; gx += 12) doc.line(gx, mapY, gx, mapY + 50)
+      for (let gy = mapY + 10; gy < mapY + 50; gy += 10) doc.line(16, gy, 126, gy)
+      doc.setFillColor(255, 104, 48)
+      doc.circle(71, mapY + 25, 3, 'F')
+      doc.setFillColor(255, 255, 255)
+      doc.circle(71, mapY + 25, 1.1, 'F')
+    }
+
+    const mapImg = await fetchStaticMap(address.lat, address.lng)
+    if (mapImg) {
       try {
-        y += 4
-        doc.setTextColor(...muted)
-        doc.setFont('helvetica', 'normal')
-        doc.setFontSize(8)
-        doc.text('PHOTO DU BÂTIMENT', 16, y)
-        doc.addImage(address.photoUrl, 'JPEG', 16, y + 3, 70, 50)
+        doc.addImage(mapImg, 'PNG', 16, mapY, 110, 50)
+      } catch {
+        drawSchematicMap()
+      }
+    } else {
+      drawSchematicMap()
+    }
+
+    // Photo du bâtiment (à droite de la carte)
+    if (address.photoUrl?.startsWith('data:image')) {
+      doc.setTextColor(...muted)
+      doc.text('PHOTO DU BÂTIMENT', 132, y)
+      try {
+        doc.addImage(address.photoUrl, 'JPEG', 132, mapY, 62, 50)
       } catch {
         /* image invalide — ignorée */
       }
     }
+    y = mapY + 50
 
     // Pied de page
     doc.setDrawColor(...brand)

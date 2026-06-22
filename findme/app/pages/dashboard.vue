@@ -12,6 +12,9 @@ useSeoMeta({ title: () => t('dashboard.title'), robots: 'noindex' })
 
 await useAsyncData('addresses', () => store.fetchAll())
 
+// Vue liste / grille (persistée).
+const view = useStorage<'grid' | 'list'>('findme-dashboard-view', 'grid')
+
 const toDelete = ref<Address | null>(null)
 const deleting = ref(false)
 const exportingId = ref<string | null>(null)
@@ -52,6 +55,15 @@ async function onExport(address: Address) {
       </div>
       <div class="flex items-center gap-3">
         <UiBadge tone="brand">{{ t('dashboard.count', { count: store.count, max: store.max }) }}</UiBadge>
+        <!-- Bascule vue grille / liste -->
+        <div v-if="store.count > 0" class="inline-flex rounded-lg border border-border-base bg-surface-card p-0.5" role="group" aria-label="Affichage">
+          <button type="button" class="flex h-8 w-8 items-center justify-center rounded-md transition-colors" :class="view === 'grid' ? 'bg-brand-500 text-white' : 'text-text-muted hover:text-text-strong'" :aria-pressed="view === 'grid'" aria-label="Vue grille" @click="view = 'grid'">
+            <Icon name="lucide:layout-grid" />
+          </button>
+          <button type="button" class="flex h-8 w-8 items-center justify-center rounded-md transition-colors" :class="view === 'list' ? 'bg-brand-500 text-white' : 'text-text-muted hover:text-text-strong'" :aria-pressed="view === 'list'" aria-label="Vue liste" @click="view = 'list'">
+            <Icon name="lucide:list" />
+          </button>
+        </div>
         <UiButton v-if="store.canCreate" :to="localePath('/addresses/new')">
           <Icon name="lucide:plus" /> {{ t('dashboard.newAddress') }}
         </UiButton>
@@ -86,8 +98,8 @@ async function onExport(address: Address) {
       </UiButton>
     </UiEmptyState>
 
-    <!-- Liste -->
-    <div v-else class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <!-- Vue grille -->
+    <div v-else-if="view === 'grid'" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <AddressCard
         v-for="address in store.items"
         :key="address.id"
@@ -96,6 +108,25 @@ async function onExport(address: Address) {
         @export="onExport"
       />
     </div>
+
+    <!-- Vue liste -->
+    <ul v-else class="mt-8 divide-y divide-border-base overflow-hidden rounded-xl border border-border-base bg-surface-card">
+      <li v-for="address in store.items" :key="address.id" class="flex flex-wrap items-center gap-4 p-4 hover:bg-surface-muted/50">
+        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-500">
+          <Icon name="lucide:map-pin" />
+        </span>
+        <div class="min-w-0 flex-1">
+          <p class="font-display font-semibold text-text-strong">{{ address.district }}, {{ address.city }}</p>
+          <p class="truncate text-sm text-text-muted">{{ address.street }} {{ address.houseNumber }} · {{ address.country }}</p>
+        </div>
+        <span class="hidden font-mono text-xs text-brand-500 sm:block">{{ address.code }}</span>
+        <div class="flex gap-1.5">
+          <NuxtLink :to="localePath(`/addresses/${address.id}`)" class="flex h-9 w-9 items-center justify-center rounded-md border border-border-base text-text-base hover:bg-surface-muted" :aria-label="t('address.viewDetail')"><Icon name="lucide:eye" /></NuxtLink>
+          <NuxtLink :to="localePath(`/addresses/${address.id}/edit`)" class="flex h-9 w-9 items-center justify-center rounded-md border border-border-base text-text-base hover:bg-surface-muted" :aria-label="t('common.edit')"><Icon name="lucide:pencil" /></NuxtLink>
+          <button type="button" class="flex h-9 w-9 items-center justify-center rounded-md border border-border-base text-text-base hover:border-error-500/30 hover:bg-error-50 hover:text-error-600" :aria-label="t('common.delete')" @click="toDelete = address"><Icon name="lucide:trash-2" /></button>
+        </div>
+      </li>
+    </ul>
 
     <!-- Confirmation de suppression -->
     <UiModal :open="!!toDelete" :title="t('dashboard.deleteTitle')" @close="toDelete = null">
