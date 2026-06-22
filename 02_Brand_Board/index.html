@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>findMe — Brand Board | GeoLink Africa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Brand */
+      --brand-600: #0D3FBD;
+      --brand-500: #1652F0;
+      --brand-400: #4575FF;
+      --brand-300: #7CA3FF;
+      --brand-100: #DBEAFE;
+      --brand-50:  #EFF5FF;
+
+      /* Accent */
+      --accent-600: #C94D20;
+      --accent-500: #FF6830;
+      --accent-400: #FF8C5A;
+      --accent-50:  #FFF4EF;
+
+      /* Success */
+      --success-500: #00C9A7;
+      --success-600: #00957A;
+
+      /* Error */
+      --error-500: #EF4444;
+
+      /* Warning */
+      --warning-500: #F59E0B;
+
+      /* Neutral */
+      --neutral-900: #0A0F1E;
+      --neutral-800: #1E293B;
+      --neutral-700: #334155;
+      --neutral-600: #475569;
+      --neutral-500: #64748B;
+      --neutral-400: #94A3B8;
+      --neutral-300: #CBD5E1;
+      --neutral-200: #E2E8F0;
+      --neutral-100: #F1F5F9;
+      --neutral-50:  #F8FAFF;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #F0F4FF;
+      color: var(--neutral-900);
+    }
+
+    /* ── COVER ── */
+    .cover {
+      background: var(--neutral-900);
+      padding: 6rem 2rem;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .cover::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 15% 60%, rgba(22,82,240,.3) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 30%, rgba(0,201,167,.2) 0%, transparent 50%);
+    }
+    .cover-bg-text {
+      position: absolute; font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800; font-size: 20rem; color: rgba(255,255,255,.02);
+      user-select: none; letter-spacing: -.05em;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+    .cover-content { position: relative; z-index: 1; }
+    .cover-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--success-500); padding: .4rem 1.1rem;
+      border: 1px solid rgba(0,201,167,.3); border-radius: 999px;
+      margin-bottom: 2.5rem;
+    }
+    .cover-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 800; color: white; letter-spacing: -.03em; line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+    .cover-title span { color: var(--brand-400); }
+    .cover-desc {
+      font-size: 1.1rem; color: var(--neutral-400);
+      max-width: 560px; line-height: 1.7; font-weight: 300;
+      margin-bottom: 3rem;
+    }
+    .cover-toc {
+      display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;
+    }
+    .toc-item {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 8px; padding: .5rem 1rem;
+      font-size: .8rem; color: var(--neutral-400);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .toc-item span { color: var(--brand-400); margin-right: .5rem; }
+
+    /* ── LAYOUT ── */
+    .page { background: var(--neutral-50); }
+    .section { padding: 5rem 3rem; max-width: 1280px; margin: 0 auto; }
+    .section-header { margin-bottom: 3.5rem; }
+    .section-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--brand-500); margin-bottom: .6rem;
+    }
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 700; color: var(--neutral-900);
+      letter-spacing: -.025em; margin-bottom: .5rem;
+    }
+    .section-desc {
+      font-size: 1rem; color: var(--neutral-500);
+      max-width: 600px; line-height: 1.75;
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(22,82,240,.15), transparent);
+    }
+    .bg-dark { background: var(--neutral-900); }
+    .bg-brand { background: var(--brand-500); }
+    .bg-mid { background: var(--neutral-800); }
+
+    /* ── LOGO ── */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .logo-card {
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      display: flex; flex-direction: column;
+      align-items: flex-start; gap: 1.5rem;
+    }
+    .logo-card-info { width: 100%; }
+    .logo-card-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+      margin-bottom: .4rem;
+    }
+    .logo-card-use {
+      font-size: .8rem; line-height: 1.5;
+    }
+    .logo-card-light {
+      background: white;
+      border: 1px solid var(--neutral-200);
+    }
+    .logo-card-light .logo-card-name { color: var(--neutral-500); }
+    .logo-card-light .logo-card-use { color: var(--neutral-500); }
+
+    .logo-card-dark { background: var(--neutral-900); }
+    .logo-card-dark .logo-card-name { color: var(--neutral-500); }
+    .logo-card-dark .logo-card-use { color: var(--neutral-500); }
+
+    .logo-card-brand {
+      background: linear-gradient(135deg, var(--brand-600) 0%, var(--brand-500) 100%);
+    }
+    .logo-card-brand .logo-card-name { color: rgba(255,255,255,.6); }
+    .logo-card-brand .logo-card-use { color: rgba(255,255,255,.6); }
+
+    /* Logo SVG sizes */
+    .logo-lg { transform: scale(1.2); transform-origin: left center; }
+    .logo-sm { transform: scale(0.85); transform-origin: left center; }
+
+    /* ── LOGO CONSTRUCTION ── */
+    .logo-anatomy {
+      background: white;
+      border-radius: 20px;
+      border: 1px solid var(--neutral-200);
+      padding: 3rem;
+      position: relative;
+    }
+    .anatomy-inner {
+      display: flex; align-items: center; justify-content: center;
+      gap: 4rem; flex-wrap: wrap;
+    }
+    .anatomy-center {
+      position: relative; display: flex; align-items: center;
+      justify-content: center;
+    }
+    .anatomy-label {
+      position: absolute;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .65rem; color: var(--neutral-500);
+      letter-spacing: .1em; text-transform: uppercase;
+      display: flex; align-items: center; gap: .4rem;
+      white-space: nowrap;
+    }
+    .anatomy-label::before {
+      content: '';
+      width: 20px; height: 1px;
+      background: var(--neutral-400);
+    }
+    .anatomy-callout {
+      display: flex; flex-direction: column; gap: .75rem;
+    }
+    .callout-item {
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .callout-dot {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    }
+    .callout-text { font-size: .8rem; color: var(--neutral-600); }
+    .callout-text strong { color: var(--neutral-900); font-weight: 600; font-size: .85rem; }
+
+    /* Clearspace demo */
+    .clearspace-demo {
+      display: inline-flex; align-items: center; justify-content: center;
+      position: relative;
+      border: 2px dashed rgba(22,82,240,.3);
+      padding: 24px;
+      background: white;
+      border-radius: 8px;
+    }
+    .clearspace-label {
+      position: absolute;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .6rem; color: var(--brand-400);
+      letter-spacing: .1em;
+    }
+    .cs-top { top: 4px; left: 50%; transform: translateX(-50%); }
+    .cs-left { left: 4px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+
+    /* ── COLORS ── */
+    .color-section-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .color-group-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600; font-size: .9rem; color: var(--neutral-700);
+      letter-spacing: .03em; margin-bottom: 1rem;
+    }
+    .color-strip {
+      display: flex; border-radius: 12px; overflow: hidden;
+      height: 72px; margin-bottom: .75rem;
+    }
+    .cs {
+      flex: 1; position: relative; cursor: default;
+      transition: flex .25s;
+    }
+    .cs:hover { flex: 2; }
+    .cs-tooltip {
+      position: absolute; bottom: 6px; left: 50%;
+      transform: translateX(-50%);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .58rem; color: white; white-space: nowrap;
+      opacity: 0; transition: opacity .2s;
+      text-shadow: 0 1px 4px rgba(0,0,0,.5);
+    }
+    .cs:hover .cs-tooltip { opacity: 1; }
+
+    .color-chips {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+    }
+    .chip {
+      display: flex; flex-direction: column;
+      border-radius: 10px; overflow: hidden;
+      width: 80px;
+    }
+    .chip-swatch { height: 44px; }
+    .chip-label {
+      background: white; border: 1px solid var(--neutral-200);
+      border-top: none; padding: .3rem .4rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .55rem; color: var(--neutral-500);
+      border-radius: 0 0 8px 8px;
+    }
+    .chip-label strong { display: block; color: var(--neutral-700); font-size: .6rem; }
+
+    .semantic-colors {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+      margin-top: 2rem;
+    }
+    .semantic-card {
+      border-radius: 12px; overflow: hidden;
+    }
+    .semantic-bar { height: 8px; }
+    .semantic-body {
+      background: white; border: 1px solid var(--neutral-200);
+      border-top: none; padding: .75rem;
+    }
+    .semantic-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600; font-size: .85rem; color: var(--neutral-800);
+      margin-bottom: .25rem;
+    }
+    .semantic-hex {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem; color: var(--neutral-500);
+      margin-bottom: .4rem;
+    }
+    .semantic-usage {
+      font-size: .72rem; color: var(--neutral-500); line-height: 1.5;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .typo-family-card {
+      background: white; border-radius: 20px;
+      border: 1px solid var(--neutral-200); padding: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .typo-family-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 2rem; padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--neutral-200);
+    }
+    .typo-family-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700; font-size: 1.1rem; color: var(--neutral-900);
+      margin-bottom: .25rem;
+    }
+    .typo-family-role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem; color: var(--neutral-500); letter-spacing: .1em;
+    }
+    .typo-family-meta {
+      text-align: right;
+      font-size: .8rem; color: var(--neutral-500);
+    }
+    .typo-weights {
+      display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.5rem;
+    }
+    .weight-tag {
+      background: var(--neutral-100); color: var(--neutral-600);
+      border-radius: 6px; padding: .3rem .7rem;
+      font-size: .75rem; font-family: 'JetBrains Mono', monospace;
+    }
+    .typo-scale-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+    }
+    .type-row {
+      border-radius: 10px; padding: 1.25rem 1.5rem;
+      background: var(--neutral-50);
+      display: flex; flex-direction: column; gap: .25rem;
+    }
+    .type-row-meta {
+      display: flex; align-items: center; gap: .75rem;
+      margin-bottom: .5rem;
+    }
+    .type-role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .62rem; color: var(--neutral-500);
+      letter-spacing: .1em; text-transform: uppercase;
+    }
+    .type-spec {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .62rem; color: var(--brand-400);
+    }
+
+    /* ── ICONOGRAPHY ── */
+    .icon-style-panel {
+      background: white; border-radius: 20px;
+      border: 1px solid var(--neutral-200); padding: 2.5rem;
+    }
+    .icon-row {
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .icon-item {
+      display: flex; flex-direction: column; align-items: center;
+      gap: .5rem; width: 72px;
+    }
+    .icon-box {
+      width: 52px; height: 52px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--neutral-100);
+    }
+    .icon-label {
+      font-size: .65rem; color: var(--neutral-500); text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .icon-style-do-dont {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .do-dont-card {
+      border-radius: 12px; padding: 1.5rem;
+    }
+    .do-card { background: rgba(0,201,167,.07); border: 1px solid rgba(0,201,167,.2); }
+    .dont-card { background: rgba(239,68,68,.07); border: 1px solid rgba(239,68,68,.2); }
+    .do-dont-header {
+      display: flex; align-items: center; gap: .5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700; font-size: .85rem; margin-bottom: .75rem;
+    }
+    .do-badge { color: var(--success-600); }
+    .dont-badge { color: var(--error-500); }
+    .do-dont-card p {
+      font-size: .8rem; color: var(--neutral-600); line-height: 1.6;
+    }
+
+    /* ── BRAND VOICE ── */
+    .voice-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .voice-card {
+      background: white; border-radius: 16px; padding: 2rem;
+      border: 1px solid var(--neutral-200);
+    }
+    .voice-icon {
+      font-size: 1.75rem; margin-bottom: 1rem;
+    }
+    .voice-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700; font-size: 1rem; color: var(--neutral-900);
+      margin-bottom: .75rem;
+    }
+    .voice-desc {
+      font-size: .85rem; color: var(--neutral-500); line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .voice-example {
+      background: var(--neutral-50); border-radius: 8px; padding: .75rem 1rem;
+      border-left: 3px solid var(--brand-500);
+    }
+    .voice-example p {
+      font-size: .8rem; color: var(--neutral-700); line-height: 1.5;
+      font-style: italic;
+    }
+    .voice-nope {
+      margin-top: .5rem;
+      background: rgba(239,68,68,.06); border-radius: 8px; padding: .75rem 1rem;
+      border-left: 3px solid var(--error-500);
+    }
+    .voice-nope p {
+      font-size: .8rem; color: var(--neutral-500); line-height: 1.5;
+      text-decoration: line-through;
+    }
+
+    /* ── LOGO USAGE ── */
+    .usage-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    }
+    .usage-card {
+      border-radius: 12px; padding: 1.75rem; position: relative;
+    }
+    .usage-correct { background: white; border: 1px solid var(--neutral-200); }
+    .usage-wrong { background: white; border: 1px solid rgba(239,68,68,.25); }
+    .usage-badge {
+      position: absolute; top: .75rem; right: .75rem;
+      font-size: .65rem; font-weight: 700; padding: .2rem .6rem;
+      border-radius: 999px; font-family: 'JetBrains Mono', monospace;
+    }
+    .badge-ok { background: rgba(0,201,167,.12); color: var(--success-600); }
+    .badge-no { background: rgba(239,68,68,.12); color: var(--error-500); }
+    .usage-label {
+      margin-top: 1.25rem; font-size: .78rem; color: var(--neutral-500);
+      line-height: 1.5;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--neutral-900); padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem; color: var(--neutral-600);
+    }
+    .footer strong { color: var(--neutral-400); }
+
+    @media (max-width: 900px) {
+      .logo-grid { grid-template-columns: 1fr; }
+      .color-section-grid { grid-template-columns: 1fr; }
+      .typo-scale-grid { grid-template-columns: 1fr; }
+      .voice-grid { grid-template-columns: 1fr; }
+      .usage-grid { grid-template-columns: 1fr; }
+      .semantic-colors { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ════════════════════════════════════════════
+       COVER
+  ════════════════════════════════════════════ -->
+  <div class="cover">
+    <div class="cover-bg-text">findMe</div>
+    <div class="cover-content">
+      <div class="cover-badge">Brand Board · v1.0 · Mai 2026</div>
+      <h1 class="cover-title">Brand <span>Board</span></h1>
+      <p class="cover-desc">
+        Identité visuelle complète de findMe — logo, couleurs, typographie,
+        iconographie et voix de marque pour GeoLink Africa.
+      </p>
+      <div class="cover-toc">
+        <div class="toc-item"><span>01</span>Logo & Variations</div>
+        <div class="toc-item"><span>02</span>Anatomie du Logo</div>
+        <div class="toc-item"><span>03</span>Palette de Couleurs</div>
+        <div class="toc-item"><span>04</span>Typographie</div>
+        <div class="toc-item"><span>05</span>Iconographie</div>
+        <div class="toc-item"><span>06</span>Voix de Marque</div>
+        <div class="toc-item"><span>07</span>Règles d'Usage</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       01 — LOGO & VARIATIONS
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-tag">01 — Logo & Variations</div>
+      <h2 class="section-title">Le logo findMe</h2>
+      <p class="section-desc">
+        Le logo combine un pictogramme de localisation et un wordmark typographique.
+        Il existe en trois déclinaisons selon le fond utilisé.
+      </p>
+    </div>
+
+    <div class="logo-grid">
+
+      <!-- Variation 1: Light bg -->
+      <div class="logo-card logo-card-light">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" width="200">
+          <defs>
+            <linearGradient id="pinGradA" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1652F0"/>
+              <stop offset="100%" stop-color="#00C9A7"/>
+            </linearGradient>
+          </defs>
+          <path d="M24 4C17.37 4 12 9.37 12 16C12 25 24 38 24 38S36 25 36 16C36 9.37 30.63 4 24 4Z" fill="url(#pinGradA)"/>
+          <circle cx="24" cy="16" r="5" fill="white" opacity=".95"/>
+          <text x="46" y="23" font-family="Plus Jakarta Sans, sans-serif" font-weight="300" font-size="22" fill="#0A0F1E">find</text>
+          <text x="91" y="23" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="22" fill="#1652F0">Me</text>
+          <text x="46" y="38" font-family="Inter, sans-serif" font-weight="400" font-size="9" fill="#94A3B8" letter-spacing="3">BY GEOLINK AFRICA</text>
+        </svg>
+        <div class="logo-card-info">
+          <div class="logo-card-name">Positif — Fond clair</div>
+          <div class="logo-card-use">Usage principal. Fonds blancs, gris clairs et photos claires. Version par défaut pour tous les supports numériques.</div>
+        </div>
+      </div>
+
+      <!-- Variation 2: Dark bg -->
+      <div class="logo-card logo-card-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" width="200">
+          <defs>
+            <linearGradient id="pinGradB" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#4575FF"/>
+              <stop offset="100%" stop-color="#00C9A7"/>
+            </linearGradient>
+          </defs>
+          <path d="M24 4C17.37 4 12 9.37 12 16C12 25 24 38 24 38S36 25 36 16C36 9.37 30.63 4 24 4Z" fill="url(#pinGradB)"/>
+          <circle cx="24" cy="16" r="5" fill="white" opacity=".95"/>
+          <text x="46" y="23" font-family="Plus Jakarta Sans, sans-serif" font-weight="300" font-size="22" fill="white">find</text>
+          <text x="91" y="23" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="22" fill="#7CA3FF">Me</text>
+          <text x="46" y="38" font-family="Inter, sans-serif" font-weight="400" font-size="9" fill="rgba(148,163,184,.6)" letter-spacing="3">BY GEOLINK AFRICA</text>
+        </svg>
+        <div class="logo-card-info">
+          <div class="logo-card-name">Négatif — Fond sombre</div>
+          <div class="logo-card-use">Fonds noirs, bleu nuit et photos sombres. Mode dark de l'application, headers et footers sombres.</div>
+        </div>
+      </div>
+
+      <!-- Variation 3: Brand blue -->
+      <div class="logo-card logo-card-brand">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" width="200">
+          <path d="M24 4C17.37 4 12 9.37 12 16C12 25 24 38 24 38S36 25 36 16C36 9.37 30.63 4 24 4Z" fill="rgba(255,255,255,.25)"/>
+          <circle cx="24" cy="16" r="5" fill="white" opacity=".9"/>
+          <text x="46" y="23" font-family="Plus Jakarta Sans, sans-serif" font-weight="300" font-size="22" fill="white">find</text>
+          <text x="91" y="23" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="22" fill="white">Me</text>
+          <text x="46" y="38" font-family="Inter, sans-serif" font-weight="400" font-size="9" fill="rgba(255,255,255,.6)" letter-spacing="3">BY GEOLINK AFRICA</text>
+        </svg>
+        <div class="logo-card-info">
+          <div class="logo-card-name">Monochrome Blanc — Fond coloré</div>
+          <div class="logo-card-use">Fonds bleus, dégradés de marque. Boutons hero, bannières et matériels promotionnels.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Icon-only variants -->
+    <div style="margin-top:2rem;background:white;border-radius:16px;border:1px solid var(--neutral-200);padding:2.5rem;">
+      <div class="section-tag" style="margin-bottom:1.5rem;">Pictogramme seul (favicon, icône app)</div>
+      <div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.75rem;">
+          <div style="width:64px;height:64px;background:white;border-radius:16px;border:1px solid var(--neutral-200);display:flex;align-items:center;justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 42" width="28">
+              <defs><linearGradient id="pA" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1652F0"/><stop offset="100%" stop-color="#00C9A7"/></linearGradient></defs>
+              <path d="M16 0C9.37 0 4 5.37 4 12C4 21 16 36 16 36S28 21 28 12C28 5.37 22.63 0 16 0Z" fill="url(#pA)"/>
+              <circle cx="16" cy="12" r="5" fill="white" opacity=".95"/>
+            </svg>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--neutral-500);">64×64 · Clair</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.75rem;">
+          <div style="width:64px;height:64px;background:var(--neutral-900);border-radius:16px;display:flex;align-items:center;justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 42" width="28">
+              <defs><linearGradient id="pB" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4575FF"/><stop offset="100%" stop-color="#00C9A7"/></linearGradient></defs>
+              <path d="M16 0C9.37 0 4 5.37 4 12C4 21 16 36 16 36S28 21 28 12C28 5.37 22.63 0 16 0Z" fill="url(#pB)"/>
+              <circle cx="16" cy="12" r="5" fill="white" opacity=".95"/>
+            </svg>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--neutral-500);">64×64 · Sombre</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.75rem;">
+          <div style="width:64px;height:64px;background:var(--brand-500);border-radius:16px;display:flex;align-items:center;justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 42" width="28">
+              <path d="M16 0C9.37 0 4 5.37 4 12C4 21 16 36 16 36S28 21 28 12C28 5.37 22.63 0 16 0Z" fill="rgba(255,255,255,.3)"/>
+              <circle cx="16" cy="12" r="5" fill="white" opacity=".95"/>
+            </svg>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--neutral-500);">64×64 · Coloré</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.75rem;">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--brand-600),var(--success-500));border-radius:12px;display:flex;align-items:center;justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 42" width="22">
+              <path d="M16 0C9.37 0 4 5.37 4 12C4 21 16 36 16 36S28 21 28 12C28 5.37 22.63 0 16 0Z" fill="rgba(255,255,255,.3)"/>
+              <circle cx="16" cy="12" r="5" fill="white" opacity=".95"/>
+            </svg>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--neutral-500);">48×48 · App</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.75rem;">
+          <div style="width:32px;height:32px;background:var(--brand-500);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 42" width="16">
+              <path d="M16 0C9.37 0 4 5.37 4 12C4 21 16 36 16 36S28 21 28 12C28 5.37 22.63 0 16 0Z" fill="rgba(255,255,255,.35)"/>
+              <circle cx="16" cy="12" r="5" fill="white"/>
+            </svg>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--neutral-500);">32×32 · Favicon</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════════════════
+       02 — ANATOMIE
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-tag">02 — Anatomie & Espace de Protection</div>
+      <h2 class="section-title">Construction du logo</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+      <div class="logo-anatomy">
+        <div style="display:flex;justify-content:center;margin-bottom:2rem;">
+          <div class="clearspace-demo">
+            <span class="clearspace-label cs-top">x</span>
+            <span class="clearspace-label cs-left">x</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" width="200">
+              <defs>
+                <linearGradient id="pinAnat" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#1652F0"/>
+                  <stop offset="100%" stop-color="#00C9A7"/>
+                </linearGradient>
+              </defs>
+              <path d="M24 4C17.37 4 12 9.37 12 16C12 25 24 38 24 38S36 25 36 16C36 9.37 30.63 4 24 4Z" fill="url(#pinAnat)"/>
+              <circle cx="24" cy="16" r="5" fill="white" opacity=".95"/>
+              <text x="46" y="23" font-family="Plus Jakarta Sans, sans-serif" font-weight="300" font-size="22" fill="#0A0F1E">find</text>
+              <text x="91" y="23" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="22" fill="#1652F0">Me</text>
+              <text x="46" y="38" font-family="Inter, sans-serif" font-weight="400" font-size="9" fill="#94A3B8" letter-spacing="3">BY GEOLINK AFRICA</text>
+            </svg>
+          </div>
+        </div>
+        <p style="font-size:.8rem;color:var(--neutral-500);text-align:center;line-height:1.6;">
+          Zone de protection minimale = <strong style="color:var(--neutral-700);">x</strong> = hauteur du pin pictogramme.<br>
+          Aucun élément ne doit pénétrer cet espace.
+        </p>
+      </div>
+
+      <div class="anatomy-callout">
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.95rem;color:var(--neutral-800);margin-bottom:.75rem;">Éléments constitutifs</div>
+        <div class="callout-item">
+          <div class="callout-dot" style="background:linear-gradient(135deg,#1652F0,#00C9A7);"></div>
+          <div class="callout-text"><strong>Pictogramme pin</strong> — Dégradé de marque (Brand 500 → Teal 500). Représente la géolocalisation, le cœur de la proposition.</div>
+        </div>
+        <div class="callout-item">
+          <div class="callout-dot" style="background:white;border:1px solid var(--neutral-300);"></div>
+          <div class="callout-text"><strong>Point intérieur blanc</strong> — Le "point" GPS, symbolise la précision et l'emplacement exact.</div>
+        </div>
+        <div class="callout-item">
+          <div class="callout-dot" style="background:var(--neutral-800);"></div>
+          <div class="callout-text"><strong>"find"</strong> — Plus Jakarta Sans, poids 300 (Light). Neutre, invite, guide. Couleur neutre-900.</div>
+        </div>
+        <div class="callout-item">
+          <div class="callout-dot" style="background:var(--brand-500);"></div>
+          <div class="callout-text"><strong>"Me"</strong> — Plus Jakarta Sans, poids 800 (ExtraBold). Personnel, affirmatif. Couleur Brand 500.</div>
+        </div>
+        <div class="callout-item">
+          <div class="callout-dot" style="background:var(--neutral-400);"></div>
+          <div class="callout-text"><strong>Signature</strong> — Inter 400, "BY GEOLINK AFRICA". Optionnelle selon contexte. Letter-spacing +3px.</div>
+        </div>
+        <div style="margin-top:1rem;background:var(--neutral-100);border-radius:10px;padding:1rem;">
+          <div style="font-size:.75rem;color:var(--neutral-600);line-height:1.6;">
+            <strong style="color:var(--neutral-800);">Taille minimale :</strong> 120px de large pour le logo complet, 24px pour le pictogramme seul.<br>
+            <strong style="color:var(--neutral-800);">Format fichiers :</strong> SVG (vectoriel), PNG @1x, @2x, @3x.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════════════════
+       03 — PALETTE DE COULEURS
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-tag">03 — Palette de Couleurs</div>
+      <h2 class="section-title">Le système de couleurs findMe</h2>
+      <p class="section-desc">
+        Construite sur l'échelle Tailwind Slate, enrichie de couleurs de marque
+        propriétaires. Chaque teinte a un rôle précis et documenté.
+      </p>
+    </div>
+
+    <!-- Brand Blue -->
+    <div class="color-group-title">Bleu Marque — Primaire</div>
+    <div class="color-strip" style="margin-bottom:.5rem;">
+      <div class="cs" style="background:#EFF5FF;"><span class="cs-tooltip" style="color:#1652F0;">50 · #EFF5FF</span></div>
+      <div class="cs" style="background:#DBEAFE;"><span class="cs-tooltip" style="color:#1652F0;">100 · #DBEAFE</span></div>
+      <div class="cs" style="background:#BFDBFE;"><span class="cs-tooltip" style="color:#1652F0;">200</span></div>
+      <div class="cs" style="background:#93C5FD;"><span class="cs-tooltip">300</span></div>
+      <div class="cs" style="background:#4575FF;"><span class="cs-tooltip">400 · #4575FF</span></div>
+      <div class="cs" style="background:#1652F0;"><span class="cs-tooltip">500 · #1652F0 ★</span></div>
+      <div class="cs" style="background:#0D3FBD;"><span class="cs-tooltip">600 · #0D3FBD</span></div>
+      <div class="cs" style="background:#0A2E8A;"><span class="cs-tooltip">700</span></div>
+      <div class="cs" style="background:#081F60;"><span class="cs-tooltip">800</span></div>
+      <div class="cs" style="background:#050F35;"><span class="cs-tooltip">900</span></div>
+    </div>
+    <p style="font-size:.75rem;color:var(--neutral-500);margin-bottom:2.5rem;">★ Couleur principale — la plus utilisée dans l'interface.</p>
+
+    <!-- Accent Orange -->
+    <div class="color-group-title">Orange Accent — CTA & Énergie</div>
+    <div class="color-strip" style="margin-bottom:.5rem;">
+      <div class="cs" style="background:#FFF4EF;"><span class="cs-tooltip" style="color:#C94D20;">50</span></div>
+      <div class="cs" style="background:#FFE0D2;"><span class="cs-tooltip" style="color:#C94D20;">100</span></div>
+      <div class="cs" style="background:#FFB899;"><span class="cs-tooltip">200</span></div>
+      <div class="cs" style="background:#FF8C5A;"><span class="cs-tooltip">400 · #FF8C5A</span></div>
+      <div class="cs" style="background:#FF6830;"><span class="cs-tooltip">500 · #FF6830 ★</span></div>
+      <div class="cs" style="background:#C94D20;"><span class="cs-tooltip">600 · #C94D20</span></div>
+      <div class="cs" style="background:#9A3615;"><span class="cs-tooltip">700</span></div>
+    </div>
+    <p style="font-size:.75rem;color:var(--neutral-500);margin-bottom:2.5rem;">★ Utilisé exclusivement pour les CTA primaires, alerts d'action.</p>
+
+    <!-- Neutrals -->
+    <div class="color-group-title">Neutrals (Slate) — Structure</div>
+    <div class="color-chips">
+      <div class="chip"><div class="chip-swatch" style="background:#F8FAFF;border:1px solid var(--neutral-200);"></div><div class="chip-label"><strong>50</strong>#F8FAFF</div></div>
+      <div class="chip"><div class="chip-swatch" style="background:#F1F5F9;"></div><div class="chip-label"><strong>100</strong>#F1F5F9</div></div>
+      <div class="chip"><div class="chip-swatch" style="background:#E2E8F0;"></div><div class="chip-label"><strong>200</strong>#E2E8F0</div></div>
+      <div class="chip"><div class="chip-swatch" style="background:#CBD5E1;"></div><div class="chip-label"><strong>300</strong>#CBD5E1</div></div>
+      <div class="chip"><div class="chip-swatch" style="background:#94A3B8;"></div><div class="chip-label"><strong>400</strong>#94A3B8</div></div>
+      <div class="chip"><div class="chip-swatch" style="background:#64748B;"></div><div class="chip-label"><strong>500</strong>#64748B</div></div>
+      <div class="chip"><div class="chip-swatch" style="background:#475569;"></div><div class="chip-label"><strong>600</strong>#475569</div></div>
+      <div class="chip"><div class="chip-swatch" style="background:#334155;"></div><div class="chip-label"><strong>700</strong>#334155</div></div>
+      <div class="chip"><div class="chip-swatch" style="background:#1E293B;"></div><div class="chip-label"><strong>800</strong>#1E293B</div></div>
+      <div class="chip"><div class="chip-swatch" style="background:#0A0F1E;"></div><div class="chip-label"><strong>900</strong>#0A0F1E</div></div>
+    </div>
+
+    <!-- Semantic -->
+    <div class="semantic-colors">
+      <div class="semantic-card">
+        <div class="semantic-bar" style="background:#00C9A7;"></div>
+        <div class="semantic-body">
+          <div class="semantic-name">Success</div>
+          <div class="semantic-hex">#00C9A7</div>
+          <div class="semantic-usage">Confirmations, état validé, adresse créée avec succès, progression complète.</div>
+        </div>
+      </div>
+      <div class="semantic-card">
+        <div class="semantic-bar" style="background:#EF4444;"></div>
+        <div class="semantic-body">
+          <div class="semantic-name">Erreur</div>
+          <div class="semantic-hex">#EF4444</div>
+          <div class="semantic-usage">Erreurs de validation, messages d'erreur API, champs incorrects, suppression.</div>
+        </div>
+      </div>
+      <div class="semantic-card">
+        <div class="semantic-bar" style="background:#F59E0B;"></div>
+        <div class="semantic-body">
+          <div class="semantic-name">Avertissement</div>
+          <div class="semantic-hex">#F59E0B</div>
+          <div class="semantic-usage">Alertes non critiques, limite d'adresses proche, données incomplètes.</div>
+        </div>
+      </div>
+      <div class="semantic-card">
+        <div class="semantic-bar" style="background:#06B6D4;"></div>
+        <div class="semantic-body">
+          <div class="semantic-name">Information</div>
+          <div class="semantic-hex">#06B6D4</div>
+          <div class="semantic-usage">Messages informatifs, tooltips, guidance contextuelle, nouveautés.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════════════════
+       04 — TYPOGRAPHIE
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-tag">04 — Typographie</div>
+      <h2 class="section-title">Trois familles, trois rôles</h2>
+      <p class="section-desc">
+        Chaque famille typographique a un rôle précis dans la hiérarchie
+        de l'interface. Aucun mélange non documenté n'est autorisé.
+      </p>
+    </div>
+
+    <!-- Plus Jakarta Sans -->
+    <div class="typo-family-card">
+      <div class="typo-family-header">
+        <div>
+          <div class="typo-family-name" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:800;">Plus Jakarta Sans</div>
+          <div class="typo-family-role">Display · Headings · Marketing</div>
+        </div>
+        <div class="typo-family-meta">
+          <div>Google Fonts · Variable</div>
+          <div>Licence Open Font</div>
+        </div>
+      </div>
+      <div class="typo-weights">
+        <span class="weight-tag" style="font-family:'Plus Jakarta Sans';font-weight:300;">Light 300</span>
+        <span class="weight-tag" style="font-family:'Plus Jakarta Sans';font-weight:400;">Regular 400</span>
+        <span class="weight-tag" style="font-family:'Plus Jakarta Sans';font-weight:500;">Medium 500</span>
+        <span class="weight-tag" style="font-family:'Plus Jakarta Sans';font-weight:600;">SemiBold 600</span>
+        <span class="weight-tag" style="font-family:'Plus Jakarta Sans';font-weight:700;">Bold 700</span>
+        <span class="weight-tag" style="font-family:'Plus Jakarta Sans';font-weight:800;">ExtraBold 800</span>
+      </div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:3.5rem;font-weight:800;color:var(--neutral-900);letter-spacing:-.04em;line-height:1;margin-bottom:1rem;">
+        Trouvez<br><span style="color:var(--brand-500);">votre adresse.</span>
+      </div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.125rem;font-weight:300;color:var(--neutral-600);line-height:1.7;max-width:600px;">
+        findMe transforme n'importe quelle localisation africaine en une adresse numérique précise, partageable et officielle en moins de 60 secondes.
+      </div>
+    </div>
+
+    <!-- Inter -->
+    <div class="typo-family-card">
+      <div class="typo-family-header">
+        <div>
+          <div class="typo-family-name" style="font-family:'Inter',sans-serif;font-size:1.3rem;font-weight:600;">Inter</div>
+          <div class="typo-family-role">UI Body · Labels · Formulaires · Navigation</div>
+        </div>
+        <div class="typo-family-meta">
+          <div>Google Fonts · Variable</div>
+          <div>Licence Open Font</div>
+        </div>
+      </div>
+      <div class="typo-weights">
+        <span class="weight-tag" style="font-family:'Inter';font-weight:300;">Light 300</span>
+        <span class="weight-tag" style="font-family:'Inter';font-weight:400;">Regular 400</span>
+        <span class="weight-tag" style="font-family:'Inter';font-weight:500;">Medium 500</span>
+        <span class="weight-tag" style="font-family:'Inter';font-weight:600;">SemiBold 600</span>
+      </div>
+      <div class="typo-scale-grid">
+        <div class="type-row">
+          <div class="type-row-meta">
+            <span class="type-role">Body Large</span>
+            <span class="type-spec">18px / 1.75 / 400</span>
+          </div>
+          <div style="font-family:'Inter';font-size:18px;font-weight:400;color:var(--neutral-800);line-height:1.75;">Créez votre première adresse numérique en activant la géolocalisation ou en plaçant manuellement un marqueur sur la carte.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-row-meta">
+            <span class="type-role">Body</span>
+            <span class="type-spec">16px / 1.625 / 400</span>
+          </div>
+          <div style="font-family:'Inter';font-size:16px;font-weight:400;color:var(--neutral-700);line-height:1.625;">Votre adresse a été enregistrée. Vous pouvez maintenant la partager ou exporter le document officiel en PDF.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-row-meta">
+            <span class="type-role">Body Small</span>
+            <span class="type-spec">14px / 1.5 / 400</span>
+          </div>
+          <div style="font-family:'Inter';font-size:14px;color:var(--neutral-600);line-height:1.5;">Le code postal est optionnel. Tous les autres champs sont obligatoires pour valider votre adresse.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-row-meta">
+            <span class="type-role">Label / Caption</span>
+            <span class="type-spec">12px / 1.4 / 500</span>
+          </div>
+          <div style="font-family:'Inter';font-size:12px;font-weight:500;color:var(--neutral-500);line-height:1.4;text-transform:uppercase;letter-spacing:.04em;">Quartier · Rue · Numéro</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JetBrains Mono -->
+    <div class="typo-family-card">
+      <div class="typo-family-header">
+        <div>
+          <div class="typo-family-name" style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:500;letter-spacing:.02em;">JetBrains Mono</div>
+          <div class="typo-family-role">Technique · Coordonnées GPS · Codes d'adresse · Tags</div>
+        </div>
+        <div class="typo-family-meta">
+          <div>Google Fonts · Variable</div>
+          <div>Licence Apache 2.0</div>
+        </div>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:2rem;color:var(--brand-500);letter-spacing:.02em;margin-bottom:.75rem;">GL-DLA-00412</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.95rem;color:var(--neutral-600);margin-bottom:.5rem;">3.8667°N · 11.5167°E · Alt 12m</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--neutral-400);letter-spacing:.15em;">BONANJO · DOUALA · CAMEROUN · +237</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════════════════
+       05 — ICONOGRAPHIE
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-tag">05 — Iconographie</div>
+      <h2 class="section-title">Système d'icônes</h2>
+      <p class="section-desc">
+        findMe utilise Lucide Icons (stroke 1.5, coins arrondis, 24×24px de base).
+        Style : ligne fine, géométrique, accessible.
+      </p>
+    </div>
+
+    <div class="icon-style-panel">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--neutral-500);margin-bottom:1.5rem;">Icônes principales — 24×24px · Stroke 1.5</div>
+
+      <div class="icon-row">
+        <!-- Location pin -->
+        <div class="icon-item">
+          <div class="icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1652F0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <span class="icon-label">Adresse</span>
+        </div>
+        <!-- Map -->
+        <div class="icon-item">
+          <div class="icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1652F0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/>
+            </svg>
+          </div>
+          <span class="icon-label">Carte</span>
+        </div>
+        <!-- User -->
+        <div class="icon-item">
+          <div class="icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1652F0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <span class="icon-label">Profil</span>
+        </div>
+        <!-- Home -->
+        <div class="icon-item">
+          <div class="icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1652F0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <span class="icon-label">Domicile</span>
+        </div>
+        <!-- Upload -->
+        <div class="icon-item">
+          <div class="icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1652F0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+          </div>
+          <span class="icon-label">Upload</span>
+        </div>
+        <!-- Download/PDF -->
+        <div class="icon-item">
+          <div class="icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1652F0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </div>
+          <span class="icon-label">PDF Export</span>
+        </div>
+        <!-- Edit -->
+        <div class="icon-item">
+          <div class="icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1652F0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </div>
+          <span class="icon-label">Modifier</span>
+        </div>
+        <!-- Trash -->
+        <div class="icon-item">
+          <div class="icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+            </svg>
+          </div>
+          <span class="icon-label">Supprimer</span>
+        </div>
+        <!-- Check -->
+        <div class="icon-item">
+          <div class="icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#00C9A7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+          <span class="icon-label">Succès</span>
+        </div>
+        <!-- Alert -->
+        <div class="icon-item">
+          <div class="icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          </div>
+          <span class="icon-label">Alerte</span>
+        </div>
+        <!-- Search -->
+        <div class="icon-item">
+          <div class="icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          <span class="icon-label">Recherche</span>
+        </div>
+      </div>
+
+      <div class="icon-style-do-dont">
+        <div class="do-dont-card do-card">
+          <div class="do-dont-header"><span class="do-badge">✓ À FAIRE</span></div>
+          <p>Utiliser Lucide Icons, stroke 1.5px, 24×24px. Conserver la couleur sémantique (blue pour actions, red pour suppression, teal pour succès). Taille minimum 20×20px pour accessibilité.</p>
+        </div>
+        <div class="do-dont-card dont-card">
+          <div class="do-dont-header"><span class="dont-badge">✗ À ÉVITER</span></div>
+          <p>Ne pas mélanger différents styles d'icônes (filled/outline). Ne pas utiliser d'icônes sous 20×20px. Ne pas changer le stroke-width arbitrairement. Ne pas utiliser de couleurs hors palette.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════════════════
+       06 — VOIX DE MARQUE
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-tag">06 — Voix de Marque</div>
+      <h2 class="section-title">Comment findMe s'exprime</h2>
+      <p class="section-desc">
+        La voix de marque guide chaque mot de l'interface : labels, messages
+        d'erreur, confirmations, CTAs et onboarding.
+      </p>
+    </div>
+
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-icon">🎯</div>
+        <div class="voice-title">Direct & Utile</div>
+        <div class="voice-desc">Chaque phrase a un but. Pas de remplissage, pas de jargon. L'utilisateur sait exactement ce qu'il doit faire.</div>
+        <div class="voice-example"><p>"Activez la géolocalisation ou placez le point sur la carte."</p></div>
+        <div class="voice-nope"><p>"Afin de procéder à la création de votre adresse numérique, veuillez activer les services de géolocalisation."</p></div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">🤝</div>
+        <div class="voice-title">Chaleureux & Inclusif</div>
+        <div class="voice-desc">findMe parle à tous — du digital native au premier utilisateur. Ton personnel, encourageant, jamais condescendant.</div>
+        <div class="voice-example"><p>"Adresse créée avec succès. Vous pouvez maintenant la partager."</p></div>
+        <div class="voice-nope"><p>"Opération complétée. Identifiant : GL-DLA-00412 enregistré dans le système."</p></div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">⚡</div>
+        <div class="voice-title">Réactif & Précis</div>
+        <div class="voice-desc">Chaque erreur explique le problème et propose une solution. Pas de messages génériques. L'utilisateur n'est jamais laissé sans réponse.</div>
+        <div class="voice-example"><p>"Ce champ doit contenir au moins 3 caractères."</p></div>
+        <div class="voice-nope"><p>"Erreur de validation."</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════════════════
+       07 — RÈGLES D'USAGE
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-tag">07 — Règles d'Usage du Logo</div>
+      <h2 class="section-title">Ce qu'il ne faut jamais faire</h2>
+    </div>
+
+    <div class="usage-grid">
+      <div class="usage-card usage-correct">
+        <div class="usage-badge badge-ok">✓ CORRECT</div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" width="170">
+          <defs><linearGradient id="pC" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1652F0"/><stop offset="100%" stop-color="#00C9A7"/></linearGradient></defs>
+          <path d="M24 4C17.37 4 12 9.37 12 16C12 25 24 38 24 38S36 25 36 16C36 9.37 30.63 4 24 4Z" fill="url(#pC)"/>
+          <circle cx="24" cy="16" r="5" fill="white" opacity=".95"/>
+          <text x="46" y="23" font-family="Plus Jakarta Sans" font-weight="300" font-size="22" fill="#0A0F1E">find</text>
+          <text x="91" y="23" font-family="Plus Jakarta Sans" font-weight="800" font-size="22" fill="#1652F0">Me</text>
+        </svg>
+        <div class="usage-label">Version standard sur fond blanc. Proportions et couleurs respectées.</div>
+      </div>
+
+      <div class="usage-card usage-wrong">
+        <div class="usage-badge badge-no">✗ INTERDIT</div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" width="170" style="transform:scaleX(-1);">
+          <path d="M24 4C17.37 4 12 9.37 12 16C12 25 24 38 24 38S36 25 36 16C36 9.37 30.63 4 24 4Z" fill="#1652F0"/>
+          <circle cx="24" cy="16" r="5" fill="white" opacity=".95"/>
+          <text x="46" y="23" font-family="Plus Jakarta Sans" font-weight="300" font-size="22" fill="#0A0F1E">find</text>
+          <text x="91" y="23" font-family="Plus Jakarta Sans" font-weight="800" font-size="22" fill="#1652F0">Me</text>
+        </svg>
+        <div class="usage-label">Ne pas inverser/miroir le logo. Le pin doit toujours pointer vers le bas-gauche.</div>
+      </div>
+
+      <div class="usage-card usage-wrong">
+        <div class="usage-badge badge-no">✗ INTERDIT</div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" width="170">
+          <path d="M24 4C17.37 4 12 9.37 12 16C12 25 24 38 24 38S36 25 36 16C36 9.37 30.63 4 24 4Z" fill="#FF6830"/>
+          <circle cx="24" cy="16" r="5" fill="white" opacity=".95"/>
+          <text x="46" y="23" font-family="Plus Jakarta Sans" font-weight="300" font-size="22" fill="#0A0F1E">find</text>
+          <text x="91" y="23" font-family="Plus Jakarta Sans" font-weight="800" font-size="22" fill="#FF6830">Me</text>
+        </svg>
+        <div class="usage-label">Ne pas remplacer la couleur du pin par l'orange accent. Réservé aux CTA.</div>
+      </div>
+
+      <div class="usage-card usage-wrong">
+        <div class="usage-badge badge-no">✗ INTERDIT</div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" width="170" style="opacity:.35;">
+          <defs><linearGradient id="pD" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1652F0"/><stop offset="100%" stop-color="#00C9A7"/></linearGradient></defs>
+          <path d="M24 4C17.37 4 12 9.37 12 16C12 25 24 38 24 38S36 25 36 16C36 9.37 30.63 4 24 4Z" fill="url(#pD)"/>
+          <circle cx="24" cy="16" r="5" fill="white"/>
+          <text x="46" y="23" font-family="Plus Jakarta Sans" font-weight="300" font-size="22" fill="#0A0F1E">find</text>
+          <text x="91" y="23" font-family="Plus Jakarta Sans" font-weight="800" font-size="22" fill="#1652F0">Me</text>
+        </svg>
+        <div class="usage-label">Ne pas réduire l'opacité du logo. Utiliser la variante monochrome blanche si nécessaire.</div>
+      </div>
+
+      <div class="usage-card usage-wrong">
+        <div class="usage-badge badge-no">✗ INTERDIT</div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" width="170" style="transform:rotate(-15deg);">
+          <defs><linearGradient id="pE" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1652F0"/><stop offset="100%" stop-color="#00C9A7"/></linearGradient></defs>
+          <path d="M24 4C17.37 4 12 9.37 12 16C12 25 24 38 24 38S36 25 36 16C36 9.37 30.63 4 24 4Z" fill="url(#pE)"/>
+          <circle cx="24" cy="16" r="5" fill="white"/>
+          <text x="46" y="23" font-family="Plus Jakarta Sans" font-weight="300" font-size="22" fill="#0A0F1E">find</text>
+          <text x="91" y="23" font-family="Plus Jakarta Sans" font-weight="800" font-size="22" fill="#1652F0">Me</text>
+        </svg>
+        <div class="usage-label">Ne jamais faire pivoter ou incliner le logo. Il doit toujours être horizontal.</div>
+      </div>
+
+      <div class="usage-card usage-wrong">
+        <div class="usage-badge badge-no">✗ INTERDIT</div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" width="170">
+          <defs><linearGradient id="pF" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1652F0"/><stop offset="100%" stop-color="#00C9A7"/></linearGradient></defs>
+          <path d="M24 4C17.37 4 12 9.37 12 16C12 25 24 38 24 38S36 25 36 16C36 9.37 30.63 4 24 4Z" fill="url(#pF)"/>
+          <circle cx="24" cy="16" r="5" fill="white"/>
+          <text x="46" y="23" font-family="Arial, sans-serif" font-weight="bold" font-size="22" fill="#0A0F1E">find</text>
+          <text x="91" y="23" font-family="Arial, sans-serif" font-weight="bold" font-size="22" fill="#1652F0">Me</text>
+        </svg>
+        <div class="usage-label">Ne jamais substituer la typographie. Seule Plus Jakarta Sans est autorisée pour le wordmark.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════ -->
+  <footer class="footer">
+    <p><strong>findMe / GeoLink Africa</strong> — Brand Board v1.0 — Mai 2026</p>
+    <p style="margin-top:.5rem;">Livrable L2 · Projet 4 · DHI Academy · Développeur Full Stack</p>
+  </footer>
+
+</div>
+</body>
+</html>

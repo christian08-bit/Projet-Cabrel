@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>findMe — Mood Board | GeoLink Africa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-600:   #1652F0;
+      --blue-500:   #3B82F6;
+      --blue-400:   #60A5FA;
+      --orange-500: #FF6830;
+      --teal-500:   #00C9A7;
+      --dark-900:   #0A0F1E;
+      --dark-800:   #111827;
+      --dark-700:   #1E293B;
+      --slate-500:  #64748B;
+      --slate-300:  #CBD5E1;
+      --white:      #FFFFFF;
+      --cream:      #F8FAFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #F0F4FF;
+      color: var(--dark-900);
+    }
+
+    /* ── COVER ── */
+    .cover {
+      min-height: 100vh;
+      background: var(--dark-900);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(22,82,240,.35) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 30%, rgba(0,201,167,.25) 0%, transparent 55%),
+        radial-gradient(ellipse at 60% 80%, rgba(255,104,48,.15) 0%, transparent 50%);
+    }
+    .cover-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(22,82,240,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22,82,240,.08) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .cover-content {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 2rem;
+    }
+    .cover-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+      color: var(--teal-500);
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      padding: .4rem 1rem;
+      border: 1px solid rgba(0,201,167,.3);
+      border-radius: 999px;
+    }
+    .cover-logo {
+      margin-bottom: 1.5rem;
+    }
+    .cover-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      margin-bottom: 1.5rem;
+    }
+    .cover-title span { color: var(--blue-400); }
+    .cover-subtitle {
+      font-size: 1.125rem;
+      color: var(--slate-300);
+      max-width: 540px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .cover-meta {
+      display: flex; gap: 3rem; justify-content: center;
+      font-size: .8rem; color: var(--slate-500);
+      letter-spacing: .05em;
+    }
+    .cover-meta strong { display: block; color: var(--slate-300); font-weight: 500; margin-bottom: .25rem; }
+
+    /* dots decoration */
+    .cover-dots {
+      position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+    }
+    .cover-dot {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--blue-600);
+      box-shadow: 0 0 16px 4px rgba(22,82,240,.5);
+      animation: pulse 3s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); opacity: .7; }
+      50% { transform: scale(1.4); opacity: 1; }
+    }
+
+    /* ── SECTION LAYOUT ── */
+    .section { padding: 5rem 2rem; max-width: 1280px; margin: 0 auto; }
+    .section-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--blue-600);
+      margin-bottom: .75rem;
+    }
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 700; color: var(--dark-900);
+      letter-spacing: -.02em;
+      margin-bottom: .75rem;
+    }
+    .section-desc {
+      font-size: 1.05rem; color: var(--slate-500);
+      max-width: 660px; line-height: 1.75;
+      margin-bottom: 3rem;
+    }
+
+    /* ── VISION ── */
+    .vision-block {
+      background: var(--dark-900);
+      border-radius: 24px;
+      padding: 4rem;
+      position: relative; overflow: hidden;
+    }
+    .vision-block::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at top right, rgba(22,82,240,.25), transparent 60%);
+    }
+    .vision-quote {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 300; color: var(--white);
+      line-height: 1.5; letter-spacing: -.01em;
+      position: relative; z-index: 1;
+      max-width: 900px;
+    }
+    .vision-quote em { color: var(--blue-400); font-style: normal; font-weight: 600; }
+    .vision-author {
+      margin-top: 2rem; font-size: .9rem; color: var(--slate-500);
+      position: relative; z-index: 1;
+    }
+
+    /* ── MOOD PANELS ── */
+    .panels-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 320px 320px;
+      gap: 12px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .panel {
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.75rem;
+      cursor: default;
+    }
+    .panel:hover .panel-overlay { opacity: 1; }
+    .panel-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600; font-size: .95rem;
+      color: white; position: relative; z-index: 2;
+      text-shadow: 0 2px 8px rgba(0,0,0,.5);
+    }
+    .panel-sub {
+      font-size: .75rem; color: rgba(255,255,255,.7);
+      margin-top: .25rem; position: relative; z-index: 2;
+      font-weight: 300;
+    }
+    .panel-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: rgba(0,0,0,.15);
+      transition: opacity .3s;
+      opacity: 0;
+    }
+
+    /* Panel 1 — GPS Network */
+    .panel-gps {
+      background: var(--dark-900);
+      grid-column: 1; grid-row: 1;
+    }
+    .panel-gps::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 30% 40%, rgba(22,82,240,.5) 0%, transparent 55%),
+        radial-gradient(circle at 75% 65%, rgba(0,201,167,.35) 0%, transparent 45%);
+    }
+    .gps-dots { position: absolute; inset: 0; }
+    .gps-dot {
+      position: absolute;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--blue-400);
+      box-shadow: 0 0 10px 3px rgba(22,82,240,.7);
+    }
+    .gps-line {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(22,82,240,.4), transparent);
+      transform-origin: left center;
+    }
+
+    /* Panel 2 — Ciel d'Afrique */
+    .panel-sky {
+      grid-column: 2; grid-row: 1;
+      background: linear-gradient(170deg,
+        #FF8C00 0%, #FF6830 25%,
+        #E8430F 55%, #8B2500 80%, #3D1000 100%);
+    }
+    .panel-sky::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 50%;
+      background: linear-gradient(0deg, rgba(0,0,0,.6) 0%, transparent 100%);
+    }
+    /* City silhouette */
+    .city-skyline {
+      position: absolute; bottom: 40px; left: 0; right: 0;
+      height: 80px; display: flex; align-items: flex-end;
+      padding: 0 1rem; gap: 3px; opacity: .7;
+    }
+    .building {
+      background: rgba(0,0,0,.7);
+      border-radius: 2px 2px 0 0;
+      flex-shrink: 0;
+    }
+
+    /* Panel 3 — Mobile First */
+    .panel-mobile {
+      grid-column: 3; grid-row: 1 / span 2;
+      background: linear-gradient(160deg, #1652F0 0%, #0A0F1E 60%, #00C9A7 120%);
+    }
+    .phone-frame {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 160px; height: 280px;
+      background: rgba(255,255,255,.05);
+      border: 2px solid rgba(255,255,255,.15);
+      border-radius: 28px;
+      padding: 12px;
+      backdrop-filter: blur(4px);
+    }
+    .phone-screen {
+      width: 100%; height: 100%;
+      background: var(--dark-900);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .phone-map-area {
+      flex: 1;
+      background: linear-gradient(135deg, #0d1f3c 0%, #0A2555 100%);
+      position: relative;
+    }
+    .phone-map-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(22,82,240,.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22,82,240,.12) 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+    .phone-pin {
+      position: absolute; top: 35%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px; height: 26px;
+    }
+    .phone-ui-bar {
+      height: 56px; padding: 8px;
+      background: rgba(22,82,240,.9);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .phone-ui-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255,255,255,.4);
+    }
+    .phone-ui-line {
+      flex: 1; height: 8px; border-radius: 4px;
+      background: rgba(255,255,255,.2);
+    }
+
+    /* Panel 4 — Trust & Clarity */
+    .panel-trust {
+      grid-column: 1; grid-row: 2;
+      background: #F8FAFF;
+      border: 1px solid rgba(22,82,240,.1);
+    }
+    .trust-content {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      padding: 2rem;
+    }
+    .trust-card-mock {
+      background: white;
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: 0 4px 24px rgba(22,82,240,.08);
+      margin-top: 1rem;
+    }
+    .trust-card-tag {
+      display: inline-block;
+      background: rgba(22,82,240,.1);
+      color: var(--blue-600);
+      font-size: .65rem; font-weight: 600;
+      padding: .2rem .6rem; border-radius: 999px;
+      margin-bottom: .75rem;
+      font-family: 'Inter', sans-serif;
+    }
+    .trust-card-addr {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .95rem; font-weight: 600; color: var(--dark-900);
+    }
+    .trust-card-sub {
+      font-size: .75rem; color: var(--slate-500);
+      margin-top: .25rem;
+    }
+    .trust-card-coord {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .65rem; color: var(--blue-600);
+      margin-top: .75rem; padding-top: .75rem;
+      border-top: 1px solid var(--slate-300);
+    }
+
+    /* Panel 5 — Communauté */
+    .panel-community {
+      grid-column: 2; grid-row: 2;
+      background: linear-gradient(145deg,
+        #2D1B00 0%, #7B3F00 40%,
+        #1a3a2a 80%, #0d2020 100%);
+    }
+    .panel-community::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 30%, rgba(255,168,0,.2) 0%, transparent 60%);
+    }
+    .community-shapes {
+      position: absolute; inset: 0;
+    }
+    .comm-circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    /* ── COLOR MOOD ── */
+    .color-mood-strip {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      height: 120px;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .color-swatch {
+      position: relative;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: .75rem;
+      transition: flex-grow .3s;
+    }
+    .color-swatch:hover { flex-grow: 2; }
+    .swatch-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .6rem; color: white;
+      text-shadow: 0 1px 3px rgba(0,0,0,.5);
+      opacity: 0; transition: opacity .2s;
+    }
+    .color-swatch:hover .swatch-label { opacity: 1; }
+    .color-mood-words {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .mood-word {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .9rem; color: var(--dark-900);
+    }
+    .mood-word-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+
+    /* ── TYPOGRAPHY MOOD ── */
+    .typo-mood {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    .typo-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      border: 1px solid rgba(0,0,0,.06);
+    }
+    .typo-card-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem; letter-spacing: .15em;
+      color: var(--slate-500); text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .typo-specimen-big {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 3rem; font-weight: 800;
+      color: var(--dark-900); letter-spacing: -.04em;
+      line-height: 1;
+    }
+    .typo-specimen-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem; color: var(--slate-500);
+      line-height: 1.7; margin-top: 1rem;
+    }
+    .typo-specimen-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.75rem; color: var(--blue-600);
+      letter-spacing: .02em;
+    }
+    .typo-specimen-mono-small {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .8rem; color: var(--slate-500);
+      margin-top: .75rem;
+    }
+
+    /* ── PHOTOGRAPHY ── */
+    .photo-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .photo-card {
+      border-radius: 16px; overflow: hidden;
+    }
+    .photo-visual {
+      height: 200px; position: relative; overflow: hidden;
+    }
+    .photo-info { padding: 1.25rem; background: white; border: 1px solid rgba(0,0,0,.06);
+      border-top: none; border-radius: 0 0 16px 16px;
+    }
+    .photo-info h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .95rem; font-weight: 600; color: var(--dark-900);
+      margin-bottom: .5rem;
+    }
+    .photo-info p {
+      font-size: .8rem; color: var(--slate-500); line-height: 1.6;
+    }
+    .photo-tags { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .75rem; }
+    .photo-tag {
+      font-size: .65rem; padding: .2rem .6rem; border-radius: 999px;
+      background: var(--cream); color: var(--slate-500);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .photo-urban {
+      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+    }
+    .photo-mobile {
+      background: linear-gradient(160deg, #0A0F1E 0%, #1652F0 100%);
+    }
+    .photo-people {
+      background: linear-gradient(160deg, #8B4513 0%, #D2691E 50%, #CD853F 100%);
+    }
+
+    /* Decorative elements for photo panels */
+    .photo-urban::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
+      background: linear-gradient(0deg, rgba(0,0,0,.5) 0%, transparent 100%);
+    }
+    .urban-decor {
+      position: absolute; bottom: 20px; left: 20px;
+      display: flex; gap: 4px; align-items: flex-end;
+    }
+    .urban-b {
+      background: rgba(255,255,255,.15);
+      border-radius: 3px 3px 0 0;
+      width: 14px;
+    }
+    .photo-mobile-ui {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .map-preview {
+      width: 120px; height: 120px; border-radius: 12px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      position: relative; overflow: hidden;
+    }
+    .map-preview-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 12px 12px;
+    }
+    .map-pin-center {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .people-faces {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .face-circle {
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.3);
+    }
+
+    /* ── KEYWORDS ── */
+    .keywords-cloud {
+      display: flex; flex-wrap: wrap; gap: .75rem; align-items: center;
+    }
+    .keyword {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      border-radius: 999px; padding: .5rem 1.25rem;
+      font-weight: 500;
+      transition: transform .2s;
+    }
+    .keyword:hover { transform: scale(1.05); }
+    .keyword-primary {
+      background: var(--dark-900); color: white;
+      font-size: 1.2rem;
+    }
+    .keyword-blue {
+      background: rgba(22,82,240,.12); color: var(--blue-600);
+      font-size: 1rem;
+    }
+    .keyword-teal {
+      background: rgba(0,201,167,.12); color: #00957a;
+      font-size: .9rem;
+    }
+    .keyword-orange {
+      background: rgba(255,104,48,.12); color: #c94d20;
+      font-size: .85rem;
+    }
+    .keyword-gray {
+      background: rgba(100,116,139,.1); color: var(--slate-500);
+      font-size: .8rem;
+    }
+
+    /* ── REFERENCES ── */
+    .ref-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    }
+    .ref-card {
+      background: white; border-radius: 12px; padding: 1.5rem;
+      border: 1px solid rgba(0,0,0,.06);
+      text-align: center;
+    }
+    .ref-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      margin: 0 auto 1rem;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.1rem; color: white;
+    }
+    .ref-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600; font-size: .9rem; color: var(--dark-900);
+      margin-bottom: .5rem;
+    }
+    .ref-why {
+      font-size: .75rem; color: var(--slate-500); line-height: 1.5;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--dark-900);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer p {
+      font-size: .8rem; color: var(--slate-500);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: .05em;
+    }
+    .footer strong { color: var(--slate-300); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px; background: linear-gradient(90deg, transparent, rgba(22,82,240,.2), transparent);
+      margin: 0 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .panels-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .panel-mobile { grid-column: auto; grid-row: auto; }
+      .typo-mood { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: 1fr; }
+      .ref-grid { grid-template-columns: repeat(2, 1fr); }
+      .color-mood-strip { grid-template-columns: repeat(4, 1fr); height: 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════
+       COVER
+  ════════════════════════════════════════════ -->
+  <section class="cover">
+    <div class="cover-grid"></div>
+    <div class="cover-dots">
+      <div class="cover-dot" style="width:8px;height:8px;top:22%;left:15%;animation-delay:0s"></div>
+      <div class="cover-dot" style="width:5px;height:5px;top:65%;left:8%;animation-delay:.8s"></div>
+      <div class="cover-dot" style="width:6px;height:6px;top:38%;left:82%;animation-delay:1.4s;background:var(--teal-500);box-shadow:0 0 12px 3px rgba(0,201,167,.6)"></div>
+      <div class="cover-dot" style="width:9px;height:9px;top:75%;left:75%;animation-delay:.4s"></div>
+      <div class="cover-dot" style="width:4px;height:4px;top:18%;left:55%;animation-delay:2s;background:var(--orange-500);box-shadow:0 0 10px 2px rgba(255,104,48,.6)"></div>
+      <div class="cover-dot" style="width:7px;height:7px;top:50%;left:30%;animation-delay:1.1s"></div>
+      <div class="cover-dot" style="width:5px;height:5px;top:85%;left:40%;animation-delay:1.7s;background:var(--teal-500);box-shadow:0 0 10px 2px rgba(0,201,167,.5)"></div>
+    </div>
+    <div class="cover-content">
+      <div class="cover-tag">Mood Board · v1.0 · Mai 2026</div>
+      <div class="cover-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" width="220" height="56">
+          <defs>
+            <linearGradient id="pinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1652F0"/>
+              <stop offset="100%" stop-color="#00C9A7"/>
+            </linearGradient>
+          </defs>
+          <path d="M24 4C17.37 4 12 9.37 12 16C12 25 24 38 24 38S36 25 36 16C36 9.37 30.63 4 24 4Z" fill="url(#pinGrad)"/>
+          <circle cx="24" cy="16" r="5" fill="white" opacity=".95"/>
+          <text x="46" y="23" font-family="Plus Jakarta Sans, sans-serif" font-weight="300" font-size="22" fill="white">find</text>
+          <text x="91" y="23" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="22" fill="#60A5FA">Me</text>
+          <text x="46" y="38" font-family="Inter, sans-serif" font-weight="400" font-size="9" fill="rgba(148,163,184,.7)" letter-spacing="3">BY GEOLINK AFRICA</text>
+        </svg>
+      </div>
+      <h1 class="cover-title">Mood <span>Board</span></h1>
+      <p class="cover-subtitle">
+        Direction visuelle et atmosphère de marque pour le portail grand public
+        de gestion d'adressage urbain en Afrique.
+      </p>
+      <div class="cover-meta">
+        <div><strong>Projet</strong>findMe — GeoLink Africa</div>
+        <div><strong>Livrable</strong>L2 · UI/UX</div>
+        <div><strong>Version</strong>1.0 · Mai 2026</div>
+        <div><strong>Audience</strong>Douala · Yaoundé · Afrique</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       VISION
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-tag">01 — Vision</div>
+    <h2 class="section-title">Ce que nous construisons</h2>
+    <div class="vision-block">
+      <p class="vision-quote">
+        findMe doit être l'application la plus <em>claire, fiable et accessible</em> pour
+        créer et partager une adresse numérique en Afrique. Elle est conçue pour
+        <em>l'utilisateur ordinaire</em> qui navigue depuis un smartphone en 3G,
+        cherche à faire livrer un colis, obtenir un document officiel ou être
+        localisé par les services d'urgence.
+      </p>
+      <p class="vision-author">— Synthèse du brief, Lionel MBARGA, Directeur Technique · GeoLink Africa</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════════════════
+       ATMOSPHÈRE VISUELLE
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-tag">02 — Atmosphère Visuelle</div>
+    <h2 class="section-title">Six directions d'ambiance</h2>
+    <p class="section-desc">
+      Ces six panneaux définissent le vocabulaire visuel de findMe : ses lumières,
+      ses textures, ses contrastes et son ancrage africain.
+    </p>
+
+    <div class="panels-grid">
+
+      <!-- Panel 1 : GPS Network -->
+      <div class="panel panel-gps">
+        <div class="gps-dots" id="gpsDotsContainer"></div>
+        <div class="panel-overlay"></div>
+        <div class="panel-label">Données & Géolocalisation</div>
+        <div class="panel-sub">Réseau GPS · Précision coordonnées · Données temps réel</div>
+      </div>
+
+      <!-- Panel 2 : African Sky -->
+      <div class="panel panel-sky">
+        <div class="city-skyline" id="skylineContainer"></div>
+        <div class="panel-overlay"></div>
+        <div class="panel-label">Horizon Africain</div>
+        <div class="panel-sub">Douala au coucher · Chaleur · Appartenance</div>
+      </div>
+
+      <!-- Panel 3 : Mobile First (tall) -->
+      <div class="panel panel-mobile">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-map-area">
+              <div class="phone-map-grid"></div>
+              <div class="phone-pin">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 26" width="20" height="26">
+                  <path d="M10 0C6.13 0 3 3.13 3 7C3 12.25 10 20 10 20S17 12.25 17 7C17 3.13 13.87 0 10 0Z" fill="#1652F0"/>
+                  <circle cx="10" cy="7" r="3" fill="white" opacity=".9"/>
+                </svg>
+              </div>
+            </div>
+            <div class="phone-ui-bar">
+              <div class="phone-ui-dot"></div>
+              <div class="phone-ui-line"></div>
+              <div class="phone-ui-dot"></div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-overlay"></div>
+        <div class="panel-label">Mobile-First · 80% Smartphone</div>
+        <div class="panel-sub">Touch-native · Faible bande passante · Android</div>
+      </div>
+
+      <!-- Panel 4 : Trust & Clarity -->
+      <div class="panel panel-trust">
+        <div class="trust-content">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-600);font-weight:600;">Votre adresse numérique</div>
+          <div class="trust-card-mock">
+            <div class="trust-card-tag">Adresse Principale</div>
+            <div class="trust-card-addr">12, Rue de la Paix</div>
+            <div class="trust-card-sub">Bonanjo · Douala · Cameroun</div>
+            <div class="trust-card-coord">3.8667°N, 11.5167°E · GL-DLA-00412</div>
+          </div>
+        </div>
+        <div class="panel-overlay"></div>
+        <div class="panel-label" style="color:var(--dark-900);">Clarté & Confiance</div>
+        <div class="panel-sub" style="color:var(--slate-500);">Blanc · Espace · Lisibilité maximale</div>
+      </div>
+
+      <!-- Panel 5 : Community -->
+      <div class="panel panel-community">
+        <div class="community-shapes">
+          <div class="comm-circle" style="width:200px;height:200px;top:-60px;right:-40px;"></div>
+          <div class="comm-circle" style="width:120px;height:120px;bottom:30px;left:20px;"></div>
+          <div class="comm-circle" style="width:60px;height:60px;top:40%;left:40%;border-color:rgba(255,168,0,.2);"></div>
+        </div>
+        <div class="panel-overlay"></div>
+        <div class="panel-label">Communauté & Appartenance</div>
+        <div class="panel-sub">Humain · Local · Solidarité · Couleurs terre</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════════════════
+       PALETTE D'AMBIANCE
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-tag">03 — Palette d'Ambiance</div>
+    <h2 class="section-title">Les couleurs qui racontent findMe</h2>
+
+    <div class="color-mood-strip">
+      <div class="color-swatch" style="background:#0A0F1E;">
+        <span class="swatch-label">Nuit Technique<br>#0A0F1E</span>
+      </div>
+      <div class="color-swatch" style="background:#1652F0;">
+        <span class="swatch-label">Bleu GPS<br>#1652F0</span>
+      </div>
+      <div class="color-swatch" style="background:#3B82F6;">
+        <span class="swatch-label">Bleu Ciel<br>#3B82F6</span>
+      </div>
+      <div class="color-swatch" style="background:#00C9A7;">
+        <span class="swatch-label">Teal Succès<br>#00C9A7</span>
+      </div>
+      <div class="color-swatch" style="background:#FF6830;">
+        <span class="swatch-label">Orange CTA<br>#FF6830</span>
+      </div>
+      <div class="color-swatch" style="background:#8B4513;">
+        <span class="swatch-label">Terre Brune<br>#8B4513</span>
+      </div>
+      <div class="color-swatch" style="background:#F8FAFF;border:1px solid rgba(0,0,0,.08);">
+        <span class="swatch-label" style="color:var(--dark-900);">Blanc Pur<br>#F8FAFF</span>
+      </div>
+      <div class="color-swatch" style="background:linear-gradient(135deg,#1652F0,#00C9A7);">
+        <span class="swatch-label">Gradient Marque</span>
+      </div>
+    </div>
+
+    <div class="color-mood-words">
+      <div class="mood-word"><div class="mood-word-dot" style="background:#0A0F1E;"></div>Autorité</div>
+      <div class="mood-word"><div class="mood-word-dot" style="background:#1652F0;"></div>Fiabilité</div>
+      <div class="mood-word"><div class="mood-word-dot" style="background:#3B82F6;"></div>Technologie</div>
+      <div class="mood-word"><div class="mood-word-dot" style="background:#00C9A7;"></div>Croissance</div>
+      <div class="mood-word"><div class="mood-word-dot" style="background:#FF6830;"></div>Énergie</div>
+      <div class="mood-word"><div class="mood-word-dot" style="background:#8B4513;"></div>Ancrage Africain</div>
+      <div class="mood-word"><div class="mood-word-dot" style="background:#F1F5F9;border:1px solid #e2e8f0;"></div>Clarté</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════════════════
+       TYPOGRAPHIE
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-tag">04 — Direction Typographique</div>
+    <h2 class="section-title">Trois voix, une identité</h2>
+
+    <div class="typo-mood">
+      <div class="typo-card">
+        <div class="typo-card-tag">Display — Plus Jakarta Sans</div>
+        <div class="typo-specimen-big">Votre adresse,<br>partout en Afrique.</div>
+        <p class="typo-specimen-body">
+          Humaniste, chaleureuse et moderne. Utilisée pour les titres, les
+          accroches et les moments d'impact. Sa géométrie douce crée de la
+          confiance sans froideur.
+        </p>
+        <div style="margin-top:1.5rem;display:flex;gap:.5rem;flex-wrap:wrap;">
+          <span style="font-family:'Plus Jakarta Sans';font-size:.85rem;color:var(--slate-500);font-weight:300;">Light 300</span>
+          <span style="font-family:'Plus Jakarta Sans';font-size:.85rem;color:var(--slate-500);font-weight:400;">Regular</span>
+          <span style="font-family:'Plus Jakarta Sans';font-size:.85rem;color:var(--dark-900);font-weight:600;">SemiBold</span>
+          <span style="font-family:'Plus Jakarta Sans';font-size:.85rem;color:var(--dark-900);font-weight:800;">ExtraBold</span>
+        </div>
+      </div>
+
+      <div class="typo-card">
+        <div class="typo-card-tag">UI Body — Inter</div>
+        <div class="typo-specimen-body" style="font-size:1.25rem;color:var(--dark-900);margin:0;">
+          Créez, partagez et gérez vos adresses numériques en quelques
+          secondes, depuis n'importe quel smartphone.
+        </div>
+        <p class="typo-specimen-body" style="font-size:.875rem;margin-top:1rem;">
+          Parfaite lisibilité pour les corps de texte, formulaires, labels
+          et messages d'erreur. Optimisée pour petits écrans.
+        </p>
+        <div class="typo-card-tag" style="margin-top:1.5rem;margin-bottom:.75rem;">Technique — JetBrains Mono</div>
+        <div class="typo-specimen-mono">GL-DLA-00412</div>
+        <div class="typo-specimen-mono-small">3.8667°N · 11.5167°E · Bonanjo · Douala</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════════════════
+       DIRECTION PHOTOGRAPHIQUE
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-tag">05 — Direction Photographique</div>
+    <h2 class="section-title">Comment illustrer findMe</h2>
+    <p class="section-desc">
+      Trois directions cohérentes pour les visuels de la landing page, les
+      témoignages et les illustrations marketing.
+    </p>
+
+    <div class="photo-grid">
+      <div class="photo-card">
+        <div class="photo-visual photo-urban">
+          <div class="photo-urban" style="position:absolute;inset:0;"></div>
+          <div class="urban-decor">
+            <div class="building" style="height:55px;width:16px;"></div>
+            <div class="building" style="height:70px;width:10px;"></div>
+            <div class="building" style="height:40px;width:20px;"></div>
+            <div class="building" style="height:80px;width:12px;"></div>
+            <div class="building" style="height:50px;width:18px;"></div>
+            <div class="building" style="height:35px;width:14px;"></div>
+            <div class="building" style="height:65px;width:10px;"></div>
+            <div class="building" style="height:45px;width:22px;"></div>
+            <div class="building" style="height:90px;width:8px;"></div>
+            <div class="building" style="height:60px;width:16px;"></div>
+          </div>
+          <div style="position:absolute;bottom:14px;right:18px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="24" height="30">
+              <path d="M12 0C7.58 0 4 3.58 4 8C4 14 12 24 12 24S20 14 20 8C20 3.58 16.42 0 12 0Z" fill="#FF6830" opacity=".9"/>
+              <circle cx="12" cy="8" r="3.5" fill="white" opacity=".9"/>
+            </svg>
+          </div>
+        </div>
+        <div class="photo-info">
+          <h4>Ville & Infrastructure</h4>
+          <p>Rues de Douala ou Yaoundé, prises au drone ou depuis la rue, lumière dorée ou bleue de nuit. Montre le contexte réel des utilisateurs.</p>
+          <div class="photo-tags">
+            <span class="photo-tag">Golden Hour</span>
+            <span class="photo-tag">Drone</span>
+            <span class="photo-tag">Infrastructure</span>
+            <span class="photo-tag">Urbain</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-visual photo-mobile">
+          <div class="photo-mobile-ui">
+            <div class="map-preview">
+              <div class="map-preview-grid"></div>
+              <div class="map-pin-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="24" height="30">
+                  <path d="M12 0C7.58 0 4 3.58 4 8C4 14 12 24 12 24S20 14 20 8C20 3.58 16.42 0 12 0Z" fill="#1652F0"/>
+                  <circle cx="12" cy="8" r="3.5" fill="white"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="photo-info">
+          <h4>Main & Smartphone</h4>
+          <p>Mains tenant un téléphone Android, interface findMe visible à l'écran. Authentique, pas trop mise en scène. Montre la facilité d'utilisation.</p>
+          <div class="photo-tags">
+            <span class="photo-tag">Mobile</span>
+            <span class="photo-tag">Authentique</span>
+            <span class="photo-tag">UI visible</span>
+            <span class="photo-tag">Casual</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-visual photo-people">
+          <div class="people-faces">
+            <div class="face-circle" style="background:rgba(139,69,19,.5);"></div>
+            <div class="face-circle" style="background:rgba(101,67,33,.7);width:70px;height:70px;"></div>
+            <div class="face-circle" style="background:rgba(160,82,45,.5);"></div>
+          </div>
+        </div>
+        <div class="photo-info">
+          <h4>Personnes & Témoignages</h4>
+          <p>Portraits chaleureux d'utilisateurs africains souriants dans leur environnement quotidien. Diversité de genres, d'âges et de villes.</p>
+          <div class="photo-tags">
+            <span class="photo-tag">Portrait</span>
+            <span class="photo-tag">Chaleureux</span>
+            <span class="photo-tag">Diversité</span>
+            <span class="photo-tag">Naturel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════════════════
+       MOTS-CLÉS
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-tag">06 — ADN de Marque</div>
+    <h2 class="section-title">Les mots qui définissent findMe</h2>
+    <p class="section-desc">
+      Ces mots guident chaque décision de design : couleur, espacement,
+      animation, iconographie, ton de la copie.
+    </p>
+
+    <div class="keywords-cloud">
+      <span class="keyword keyword-primary">Fiable</span>
+      <span class="keyword keyword-primary">Accessible</span>
+      <span class="keyword keyword-blue">Précis</span>
+      <span class="keyword keyword-blue">Moderne</span>
+      <span class="keyword keyword-blue">Rapide</span>
+      <span class="keyword keyword-teal">Africain</span>
+      <span class="keyword keyword-teal">Inclusif</span>
+      <span class="keyword keyword-teal">Humain</span>
+      <span class="keyword keyword-orange">Intuitif</span>
+      <span class="keyword keyword-orange">Engageant</span>
+      <span class="keyword keyword-orange">Mobile-First</span>
+      <span class="keyword keyword-gray">Léger</span>
+      <span class="keyword keyword-gray">Clair</span>
+      <span class="keyword keyword-gray">Structuré</span>
+      <span class="keyword keyword-gray">Cohérent</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════════════════
+       RÉFÉRENCES
+  ════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-tag">07 — Références Visuelles</div>
+    <h2 class="section-title">Ce que nous admirons</h2>
+    <p class="section-desc">
+      Ces références ne sont pas des copies — elles inspirent des qualités
+      précises que findMe doit incarner.
+    </p>
+
+    <div class="ref-grid">
+      <div class="ref-card">
+        <div class="ref-icon" style="background:linear-gradient(135deg,#635BFF,#8B79FF);">S</div>
+        <div class="ref-name">Stripe</div>
+        <div class="ref-why">Clarté absolue, confiance immédiate, documentation impeccable. Modèle de rigueur UI pour une app B2C/B2B.</div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-icon" style="background:linear-gradient(135deg,#4285F4,#34A853);">G</div>
+        <div class="ref-name">Google Maps</div>
+        <div class="ref-why">Référence mondiale de la géolocalisation. Familiarité de l'interaction carte, clarté des pins et des routes.</div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-icon" style="background:linear-gradient(135deg,#00A3E0,#0077B6);">W</div>
+        <div class="ref-name">Wave Mobile</div>
+        <div class="ref-why">Fintech africaine de référence. Mobile-first radical, UX ultra-simple pour utilisateurs à faible alphabétisation numérique.</div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-icon" style="background:linear-gradient(135deg,#FF5F6D,#FFC371);">F</div>
+        <div class="ref-name">Flutterwave</div>
+        <div class="ref-why">Confiance africaine, design ambitieux. Prouve qu'une marque tech africaine peut viser l'excellence internationale.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════ -->
+  <footer class="footer">
+    <p><strong>findMe / GeoLink Africa</strong> — Mood Board v1.0 — Mai 2026</p>
+    <p style="margin-top:.5rem;">Livrable L2 · Projet 4 · DHI Academy · Développeur Full Stack</p>
+  </footer>
+
+  <script>
+    // Generate GPS dots
+    const container = document.getElementById('gpsDotsContainer');
+    if (container) {
+      for (let i = 0; i < 22; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'gps-dot';
+        dot.style.cssText = `
+          top: ${Math.random() * 90}%;
+          left: ${Math.random() * 90}%;
+          animation: pulse ${2 + Math.random() * 2}s ease-in-out ${Math.random() * 2}s infinite;
+          ${Math.random() > 0.7 ? 'background:var(--teal-500);box-shadow:0 0 10px 2px rgba(0,201,167,.6);' : ''}
+          ${Math.random() > 0.85 ? 'background:var(--orange-500);box-shadow:0 0 8px 2px rgba(255,104,48,.5);' : ''}
+        `;
+        container.appendChild(dot);
+      }
+
+      // Lines between dots
+      for (let i = 0; i < 8; i++) {
+        const line = document.createElement('div');
+        line.className = 'gps-line';
+        const w = 60 + Math.random() * 120;
+        line.style.cssText = `
+          width: ${w}px;
+          top: ${10 + Math.random() * 80}%;
+          left: ${Math.random() * 70}%;
+          transform: rotate(${-30 + Math.random() * 60}deg);
+          opacity: ${0.2 + Math.random() * 0.3};
+        `;
+        container.appendChild(line);
+      }
+    }
+
+    // Generate skyline
+    const skyline = document.getElementById('skylineContainer');
+    if (skyline) {
+      const heights = [45,65,38,72,55,80,42,58,35,70,48,62,40,75,53];
+      const widths  = [16,11,20,9, 14,8, 18,12,22,10,16,11,19,9, 13];
+      heights.forEach((h, i) => {
+        const b = document.createElement('div');
+        b.className = 'building';
+        b.style.height = h + 'px';
+        b.style.width  = widths[i] + 'px';
+        skyline.appendChild(b);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>findMe — Charte Graphique | GeoLink Africa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ═══════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════ */
+    :root {
+      /* Brand */
+      --brand-50:  #EFF5FF; --brand-100: #DBEAFE; --brand-200: #BFDBFE;
+      --brand-300: #93C5FD; --brand-400: #4575FF; --brand-500: #1652F0;
+      --brand-600: #0D3FBD; --brand-700: #0A2E8A; --brand-800: #081F60;
+      --brand-900: #050F35;
+      /* Accent */
+      --accent-50: #FFF4EF; --accent-100: #FFE0D2; --accent-400: #FF8C5A;
+      --accent-500: #FF6830; --accent-600: #C94D20; --accent-700: #9A3615;
+      /* Semantic */
+      --success-50: #ECFDF5; --success-500: #00C9A7; --success-600: #00957A;
+      --error-50:   #FEF2F2; --error-500:   #EF4444; --error-600:   #DC2626;
+      --warning-50: #FFFBEB; --warning-500: #F59E0B; --warning-600: #D97706;
+      --info-50:    #ECFEFF; --info-500:    #06B6D4; --info-600:    #0891B2;
+      /* Neutral (Slate) */
+      --n-50:  #F8FAFF; --n-100: #F1F5F9; --n-200: #E2E8F0; --n-300: #CBD5E1;
+      --n-400: #94A3B8; --n-500: #64748B; --n-600: #475569; --n-700: #334155;
+      --n-800: #1E293B; --n-900: #0A0F1E;
+      /* Typography */
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
+      /* Spacing (4px base) */
+      --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px;
+      --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+      --sp-12: 48px; --sp-16: 64px; --sp-20: 80px;
+      /* Radius */
+      --r-sm: 4px; --r-md: 8px; --r-lg: 12px;
+      --r-xl: 16px; --r-2xl: 24px; --r-full: 9999px;
+      /* Shadow */
+      --shadow-sm:  0 1px 3px rgba(10,15,30,.08), 0 1px 2px rgba(10,15,30,.05);
+      --shadow-md:  0 4px 12px rgba(10,15,30,.1),  0 2px 4px rgba(10,15,30,.05);
+      --shadow-lg:  0 12px 32px rgba(10,15,30,.12), 0 4px 8px rgba(10,15,30,.06);
+      --shadow-xl:  0 24px 48px rgba(10,15,30,.15), 0 8px 16px rgba(10,15,30,.08);
+      --shadow-brand: 0 4px 16px rgba(22,82,240,.3);
+      --shadow-accent: 0 4px 16px rgba(255,104,48,.35);
+      /* Transition */
+      --t-fast: 120ms ease; --t-base: 200ms ease; --t-slow: 300ms ease;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font-body); background: var(--n-50); color: var(--n-900); line-height: 1.5; }
+
+    /* ═══════════════════════════════
+       LAYOUT
+    ═══════════════════════════════ */
+    .cover {
+      background: var(--n-900); padding: 5rem 3rem;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .cover::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 60%, rgba(22,82,240,.3) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(0,201,167,.2) 0%, transparent 50%);
+    }
+    .cover-content { position: relative; z-index: 1; }
+    .cover-badge {
+      display: inline-block; font-family: var(--font-mono);
+      font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--success-500); padding: .4rem 1.1rem;
+      border: 1px solid rgba(0,201,167,.3); border-radius: var(--r-full);
+      margin-bottom: 2rem;
+    }
+    .cover-title {
+      font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800; color: white; letter-spacing: -.03em; line-height: 1;
+      margin-bottom: 1.25rem;
+    }
+    .cover-title em { color: var(--brand-400); font-style: normal; }
+    .cover-sub {
+      font-size: 1.1rem; color: var(--n-400); max-width: 520px;
+      line-height: 1.7; font-weight: 300; margin-bottom: 2.5rem;
+    }
+    .toc { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+    .toc-item {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--r-md); padding: .4rem .9rem;
+      font-size: .75rem; color: var(--n-400); font-family: var(--font-mono);
+    }
+    .toc-item span { color: var(--brand-400); margin-right: .4rem; }
+
+    .page-section { padding: 4rem 3rem; max-width: 1280px; margin: 0 auto; }
+    .s-tag {
+      font-family: var(--font-mono); font-size: .68rem;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--brand-500); margin-bottom: .5rem;
+    }
+    .s-title {
+      font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.25rem);
+      font-weight: 700; color: var(--n-900); letter-spacing: -.025em;
+      margin-bottom: .5rem;
+    }
+    .s-desc { font-size: 1rem; color: var(--n-500); max-width: 640px; line-height: 1.75; margin-bottom: 3rem; }
+
+    hr.divider {
+      border: none; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(22,82,240,.15), transparent);
+      margin: 0 3rem;
+    }
+
+    .card {
+      background: white; border-radius: var(--r-xl);
+      border: 1px solid var(--n-200); padding: 2rem;
+    }
+    .card-title {
+      font-family: var(--font-display); font-weight: 600; font-size: .95rem;
+      color: var(--n-700); margin-bottom: 1.5rem; padding-bottom: 1rem;
+      border-bottom: 1px solid var(--n-200);
+    }
+    .label-mono {
+      font-family: var(--font-mono); font-size: .65rem;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--n-500);
+    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+
+    /* ═══════════════════════════════
+       COLOR SYSTEM
+    ═══════════════════════════════ */
+    .color-row { display: flex; height: 56px; border-radius: var(--r-lg); overflow: hidden; margin-bottom: .4rem; }
+    .c { flex: 1; position: relative; cursor: default; transition: flex .2s; }
+    .c:hover { flex: 1.8; }
+    .c::after {
+      content: attr(data-label);
+      position: absolute; bottom: 5px; left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono); font-size: .52rem;
+      color: white; white-space: nowrap; opacity: 0;
+      text-shadow: 0 1px 3px rgba(0,0,0,.6);
+      transition: opacity .2s;
+    }
+    .c:hover::after { opacity: 1; }
+
+    .color-token-table { width: 100%; border-collapse: collapse; }
+    .color-token-table th {
+      font-family: var(--font-mono); font-size: .65rem; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--n-500); font-weight: 500;
+      padding: .5rem .75rem; text-align: left;
+      border-bottom: 1px solid var(--n-200);
+    }
+    .color-token-table td {
+      padding: .6rem .75rem; font-size: .82rem; color: var(--n-700);
+      border-bottom: 1px solid var(--n-100); vertical-align: middle;
+    }
+    .color-token-table tr:last-child td { border-bottom: none; }
+    .swatch-inline {
+      width: 20px; height: 20px; border-radius: 5px; display: inline-block;
+      vertical-align: middle; margin-right: .5rem;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+    }
+    .contrast-badge {
+      display: inline-block; font-family: var(--font-mono); font-size: .62rem;
+      padding: .15rem .5rem; border-radius: var(--r-full); font-weight: 600;
+    }
+    .aa { background: rgba(0,201,167,.12); color: var(--success-600); }
+    .aaa { background: rgba(22,82,240,.1); color: var(--brand-600); }
+    .fail { background: rgba(239,68,68,.1); color: var(--error-600); }
+
+    /* ═══════════════════════════════
+       TYPOGRAPHY SCALE
+    ═══════════════════════════════ */
+    .typo-table { width: 100%; border-collapse: collapse; }
+    .typo-table thead th {
+      font-family: var(--font-mono); font-size: .63rem; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--n-500); font-weight: 500;
+      padding: .5rem 1rem; text-align: left; border-bottom: 2px solid var(--n-200);
+    }
+    .typo-table tbody tr { border-bottom: 1px solid var(--n-100); }
+    .typo-table tbody tr:last-child { border-bottom: none; }
+    .typo-table tbody td { padding: .75rem 1rem; vertical-align: middle; }
+    .typo-token { font-family: var(--font-mono); font-size: .72rem; color: var(--brand-500); }
+    .typo-spec-cell { font-family: var(--font-mono); font-size: .68rem; color: var(--n-500); }
+    .typo-sample-cell { color: var(--n-800); }
+
+    /* ═══════════════════════════════
+       SPACING
+    ═══════════════════════════════ */
+    .spacing-row {
+      display: flex; align-items: center; gap: 1.25rem;
+      padding: .6rem 0; border-bottom: 1px solid var(--n-100);
+    }
+    .spacing-row:last-child { border-bottom: none; }
+    .spacing-block { background: var(--brand-500); border-radius: 3px; height: 20px; min-width: 4px; flex-shrink: 0; }
+    .spacing-token { font-family: var(--font-mono); font-size: .72rem; color: var(--brand-500); min-width: 60px; }
+    .spacing-px { font-family: var(--font-mono); font-size: .72rem; color: var(--n-500); min-width: 40px; }
+    .spacing-use { font-size: .78rem; color: var(--n-600); }
+
+    /* ═══════════════════════════════
+       RADIUS & SHADOWS
+    ═══════════════════════════════ */
+    .radius-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; }
+    .radius-item { display: flex; flex-direction: column; align-items: center; gap: .75rem; }
+    .radius-box {
+      width: 56px; height: 56px; background: var(--brand-100);
+      border: 2px solid var(--brand-300);
+    }
+    .radius-label { font-family: var(--font-mono); font-size: .62rem; color: var(--n-500); text-align: center; }
+
+    .shadow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .shadow-item {
+      height: 80px; background: white; border-radius: var(--r-lg);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .shadow-caption { text-align: center; margin-top: .75rem; font-family: var(--font-mono); font-size: .62rem; color: var(--n-500); }
+
+    /* ═══════════════════════════════
+       BUTTONS
+    ═══════════════════════════════ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: .5rem; font-family: var(--font-body); font-weight: 600;
+      font-size: .9375rem; line-height: 1; cursor: pointer; border: none;
+      outline: none; text-decoration: none; white-space: nowrap;
+      transition: all var(--t-base);
+      border-radius: var(--r-lg); padding: .75rem 1.5rem;
+    }
+    .btn:focus-visible { outline: 3px solid var(--brand-400); outline-offset: 3px; }
+
+    /* Variants */
+    .btn-primary {
+      background: var(--brand-500); color: white;
+      box-shadow: var(--shadow-brand);
+    }
+    .btn-primary:hover { background: var(--brand-600); box-shadow: 0 6px 20px rgba(22,82,240,.4); transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); box-shadow: var(--shadow-brand); }
+
+    .btn-accent {
+      background: var(--accent-500); color: white;
+      box-shadow: var(--shadow-accent);
+    }
+    .btn-accent:hover { background: var(--accent-600); box-shadow: 0 6px 20px rgba(255,104,48,.45); transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: var(--brand-50); color: var(--brand-600);
+      border: 1.5px solid var(--brand-200);
+    }
+    .btn-secondary:hover { background: var(--brand-100); border-color: var(--brand-300); }
+
+    .btn-ghost {
+      background: transparent; color: var(--n-700);
+      border: 1.5px solid var(--n-300);
+    }
+    .btn-ghost:hover { background: var(--n-100); border-color: var(--n-400); }
+
+    .btn-danger {
+      background: var(--error-50); color: var(--error-600);
+      border: 1.5px solid rgba(239,68,68,.25);
+    }
+    .btn-danger:hover { background: var(--error-500); color: white; }
+
+    .btn-dark {
+      background: var(--n-900); color: white;
+    }
+    .btn-dark:hover { background: var(--n-800); }
+
+    /* Sizes */
+    .btn-sm { font-size: .8125rem; padding: .5rem 1rem; border-radius: var(--r-md); }
+    .btn-lg { font-size: 1.0625rem; padding: .9375rem 2rem; border-radius: var(--r-xl); }
+    .btn-xl { font-size: 1.125rem; padding: 1.125rem 2.5rem; border-radius: var(--r-xl); }
+    .btn-icon { padding: .75rem; border-radius: var(--r-lg); }
+    .btn-icon-sm { padding: .5rem; border-radius: var(--r-md); }
+    .btn-full { width: 100%; }
+
+    /* States */
+    .btn-disabled, .btn:disabled {
+      opacity: .45; cursor: not-allowed;
+      pointer-events: none; box-shadow: none; transform: none !important;
+    }
+    .btn-loading { position: relative; color: transparent !important; }
+    .btn-loading::after {
+      content: '';
+      position: absolute; top: 50%; left: 50%;
+      width: 16px; height: 16px; margin: -8px 0 0 -8px;
+      border: 2px solid rgba(255,255,255,.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .btn-row { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin-bottom: 1rem; }
+
+    /* ═══════════════════════════════
+       INPUTS
+    ═══════════════════════════════ */
+    .form-group { margin-bottom: 1.25rem; }
+    .form-label {
+      display: block; font-size: .875rem; font-weight: 500; color: var(--n-700);
+      margin-bottom: .4rem;
+    }
+    .form-label .required { color: var(--error-500); margin-left: .2rem; }
+    .form-input, .form-select, .form-textarea {
+      display: block; width: 100%;
+      font-family: var(--font-body); font-size: .9375rem; color: var(--n-800);
+      background: white; border: 1.5px solid var(--n-300);
+      border-radius: var(--r-lg); padding: .75rem 1rem;
+      outline: none; transition: all var(--t-base);
+      appearance: none;
+    }
+    .form-input::placeholder, .form-select::placeholder, .form-textarea::placeholder { color: var(--n-400); }
+    .form-input:hover, .form-select:hover, .form-textarea:hover { border-color: var(--n-400); }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--brand-500);
+      box-shadow: 0 0 0 3px rgba(22,82,240,.12);
+    }
+    .form-input.is-error, .form-select.is-error, .form-textarea.is-error {
+      border-color: var(--error-500);
+      box-shadow: 0 0 0 3px rgba(239,68,68,.1);
+    }
+    .form-input.is-success, .form-select.is-success {
+      border-color: var(--success-500);
+      box-shadow: 0 0 0 3px rgba(0,201,167,.1);
+    }
+    .form-input:disabled, .form-select:disabled {
+      background: var(--n-100); color: var(--n-400); cursor: not-allowed;
+    }
+    .form-hint {
+      margin-top: .35rem; font-size: .8125rem; color: var(--n-500);
+    }
+    .form-error {
+      margin-top: .35rem; font-size: .8125rem; color: var(--error-600);
+      display: flex; align-items: center; gap: .3rem;
+    }
+    .form-success-msg {
+      margin-top: .35rem; font-size: .8125rem; color: var(--success-600);
+      display: flex; align-items: center; gap: .3rem;
+    }
+    .input-with-icon { position: relative; }
+    .input-with-icon .form-input { padding-left: 2.75rem; }
+    .input-icon {
+      position: absolute; left: .875rem; top: 50%;
+      transform: translateY(-50%); color: var(--n-400); pointer-events: none;
+    }
+    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+    .input-group { display: flex; }
+    .input-group .form-input { border-radius: var(--r-lg) 0 0 var(--r-lg); border-right: none; }
+    .input-group .btn { border-radius: 0 var(--r-lg) var(--r-lg) 0; }
+
+    /* Password strength */
+    .pwd-strength { margin-top: .5rem; }
+    .pwd-bar { display: flex; gap: 3px; margin-bottom: .25rem; }
+    .pwd-seg { flex: 1; height: 3px; border-radius: var(--r-full); background: var(--n-200); transition: background var(--t-base); }
+    .pwd-seg.active-weak { background: var(--error-500); }
+    .pwd-seg.active-fair { background: var(--warning-500); }
+    .pwd-seg.active-strong { background: var(--success-500); }
+
+    /* ═══════════════════════════════
+       BADGES & TAGS
+    ═══════════════════════════════ */
+    .badge {
+      display: inline-flex; align-items: center; gap: .3rem;
+      font-size: .75rem; font-weight: 600; line-height: 1;
+      padding: .3rem .7rem; border-radius: var(--r-full);
+    }
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; }
+    .badge-brand    { background: var(--brand-50); color: var(--brand-600); }
+    .badge-success  { background: var(--success-50); color: var(--success-600); }
+    .badge-error    { background: var(--error-50); color: var(--error-600); }
+    .badge-warning  { background: var(--warning-50); color: var(--warning-600); }
+    .badge-info     { background: var(--info-50); color: var(--info-600); }
+    .badge-neutral  { background: var(--n-100); color: var(--n-600); }
+    .badge-dark     { background: var(--n-800); color: white; }
+
+    /* ═══════════════════════════════
+       ALERTS
+    ═══════════════════════════════ */
+    .alert {
+      display: flex; gap: .875rem; align-items: flex-start;
+      padding: 1rem 1.25rem; border-radius: var(--r-lg);
+      margin-bottom: .75rem; border: 1px solid;
+    }
+    .alert-icon { flex-shrink: 0; margin-top: .05rem; }
+    .alert-body { flex: 1; }
+    .alert-title { font-weight: 600; font-size: .9rem; margin-bottom: .2rem; }
+    .alert-desc { font-size: .84rem; line-height: 1.55; }
+    .alert-success { background: var(--success-50); border-color: rgba(0,201,167,.25); color: var(--success-600); }
+    .alert-success .alert-desc { color: #065f48; }
+    .alert-error { background: var(--error-50); border-color: rgba(239,68,68,.2); color: var(--error-600); }
+    .alert-error .alert-desc { color: #991b1b; }
+    .alert-warning { background: var(--warning-50); border-color: rgba(245,158,11,.25); color: var(--warning-600); }
+    .alert-warning .alert-desc { color: #92400e; }
+    .alert-info { background: var(--info-50); border-color: rgba(6,182,212,.2); color: var(--info-600); }
+    .alert-info .alert-desc { color: #164e63; }
+
+    /* ═══════════════════════════════
+       CARDS
+    ═══════════════════════════════ */
+    .address-card {
+      background: white; border-radius: var(--r-xl);
+      border: 1px solid var(--n-200); overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--t-base), transform var(--t-base);
+    }
+    .address-card:hover {
+      box-shadow: var(--shadow-md); transform: translateY(-2px);
+    }
+    .address-card-img {
+      height: 160px;
+      background: linear-gradient(135deg, var(--brand-900) 0%, var(--brand-700) 100%);
+      position: relative; overflow: hidden;
+    }
+    .addr-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba(10,15,30,.6) 0%, transparent 60%);
+    }
+    .addr-map-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .addr-pin {
+      position: absolute; top: 40%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .address-card-body { padding: 1.25rem; }
+    .address-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: .625rem; }
+    .address-card-title {
+      font-family: var(--font-display); font-weight: 700; font-size: 1rem;
+      color: var(--n-900); line-height: 1.3;
+    }
+    .address-card-sub { font-size: .8125rem; color: var(--n-500); margin-top: .2rem; }
+    .address-card-coord {
+      font-family: var(--font-mono); font-size: .7rem; color: var(--brand-500);
+      padding: .5rem 0; border-top: 1px solid var(--n-200); margin-top: .75rem;
+    }
+    .address-card-actions {
+      display: flex; gap: .5rem; padding: .875rem 1.25rem;
+      background: var(--n-50); border-top: 1px solid var(--n-200);
+    }
+    .addr-action-btn {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: .35rem;
+      padding: .5rem; background: white; border: 1px solid var(--n-200);
+      border-radius: var(--r-md); font-size: .78rem; font-weight: 500; color: var(--n-600);
+      cursor: pointer; transition: all var(--t-fast);
+    }
+    .addr-action-btn:hover { background: var(--n-50); border-color: var(--n-300); color: var(--n-800); }
+    .addr-action-btn.danger:hover { background: var(--error-50); border-color: rgba(239,68,68,.25); color: var(--error-600); }
+
+    /* Stat Card */
+    .stat-card {
+      background: white; border-radius: var(--r-xl);
+      border: 1px solid var(--n-200); padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-card-icon {
+      width: 44px; height: 44px; border-radius: var(--r-lg);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .stat-card-value {
+      font-family: var(--font-display); font-size: 2rem; font-weight: 800;
+      color: var(--n-900); letter-spacing: -.04em; line-height: 1;
+      margin-bottom: .25rem;
+    }
+    .stat-card-label { font-size: .875rem; color: var(--n-500); }
+    .stat-card-trend {
+      display: inline-flex; align-items: center; gap: .25rem;
+      font-size: .78rem; font-weight: 600; margin-top: .5rem;
+    }
+    .trend-up { color: var(--success-600); }
+    .trend-down { color: var(--error-600); }
+
+    /* ═══════════════════════════════
+       STEPPER
+    ═══════════════════════════════ */
+    .stepper { display: flex; align-items: center; gap: 0; }
+    .step {
+      display: flex; align-items: center; gap: .5rem; flex: 1;
+    }
+    .step:last-child { flex: none; }
+    .step-circle {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem; font-weight: 700; flex-shrink: 0;
+      transition: all var(--t-base);
+    }
+    .step-done .step-circle { background: var(--success-500); color: white; }
+    .step-active .step-circle { background: var(--brand-500); color: white; box-shadow: 0 0 0 4px rgba(22,82,240,.15); }
+    .step-pending .step-circle { background: var(--n-100); color: var(--n-500); border: 2px solid var(--n-300); }
+    .step-label { font-size: .78rem; font-weight: 500; }
+    .step-done .step-label, .step-active .step-label { color: var(--n-800); }
+    .step-pending .step-label { color: var(--n-400); }
+    .step-line {
+      flex: 1; height: 2px;
+      background: var(--n-200);
+      margin: 0 .5rem;
+    }
+    .step-line.done { background: var(--success-500); }
+
+    /* ═══════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════ */
+    .nav-demo {
+      background: white; border-radius: var(--r-xl);
+      border: 1px solid var(--n-200); overflow: hidden;
+    }
+    .navbar {
+      display: flex; align-items: center; padding: 0 1.5rem;
+      height: 60px; border-bottom: 1px solid var(--n-200);
+      gap: 2rem;
+    }
+    .nav-logo {
+      font-family: var(--font-display); font-weight: 800; font-size: 1.1rem;
+      color: var(--brand-500); margin-right: auto;
+    }
+    .nav-link {
+      font-size: .875rem; font-weight: 500; color: var(--n-600);
+      text-decoration: none; padding: .35rem .1rem;
+      border-bottom: 2px solid transparent;
+      transition: all var(--t-fast);
+    }
+    .nav-link:hover { color: var(--n-900); }
+    .nav-link.active { color: var(--brand-500); border-bottom-color: var(--brand-500); }
+    .nav-content { padding: 1.5rem; }
+
+    .tab-bar {
+      display: flex; gap: 0; background: var(--n-100);
+      border-radius: var(--r-lg); padding: 3px; width: fit-content;
+    }
+    .tab-item {
+      padding: .4rem 1rem; border-radius: calc(var(--r-lg) - 3px);
+      font-size: .85rem; font-weight: 500; cursor: pointer;
+      transition: all var(--t-fast); color: var(--n-600);
+    }
+    .tab-item.active {
+      background: white; color: var(--n-900);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ═══════════════════════════════
+       LOADING / SKELETON
+    ═══════════════════════════════ */
+    @keyframes shimmer {
+      0% { background-position: -400px 0; }
+      100% { background-position: 400px 0; }
+    }
+    .skeleton {
+      background: linear-gradient(90deg, var(--n-200) 25%, var(--n-100) 50%, var(--n-200) 75%);
+      background-size: 800px 100%;
+      animation: shimmer 1.4s ease-in-out infinite;
+      border-radius: var(--r-md);
+    }
+    .spinner {
+      width: 20px; height: 20px; border-radius: 50%;
+      border: 2px solid rgba(22,82,240,.2); border-top-color: var(--brand-500);
+      animation: spin .7s linear infinite; display: inline-block;
+    }
+    .spinner-sm {
+      width: 14px; height: 14px;
+      border: 2px solid rgba(255,255,255,.25); border-top-color: white;
+      animation: spin .7s linear infinite; display: inline-block;
+      border-radius: 50%;
+    }
+
+    /* ═══════════════════════════════
+       DARK MODE PREVIEW
+    ═══════════════════════════════ */
+    .dark-preview {
+      background: var(--n-900); border-radius: var(--r-2xl);
+      padding: 2.5rem; color: white;
+    }
+    .dark-card {
+      background: var(--n-800); border-radius: var(--r-xl);
+      border: 1px solid rgba(255,255,255,.08); padding: 1.5rem;
+    }
+    .dark-input {
+      width: 100%; background: var(--n-700); border: 1.5px solid rgba(255,255,255,.12);
+      border-radius: var(--r-lg); padding: .75rem 1rem;
+      color: white; font-family: var(--font-body); font-size: .9rem; outline: none;
+    }
+    .dark-input:focus { border-color: var(--brand-400); box-shadow: 0 0 0 3px rgba(69,117,255,.15); }
+    .dark-input::placeholder { color: rgba(255,255,255,.3); }
+
+    /* ═══════════════════════════════
+       GRID SYSTEM
+    ═══════════════════════════════ */
+    .grid-demo { background: rgba(22,82,240,.04); border-radius: var(--r-xl); padding: 1.5rem; }
+    .grid-cols { display: grid; gap: 12px; margin-bottom: 1rem; }
+    .grid-col-cell {
+      background: rgba(22,82,240,.12); border-radius: var(--r-md);
+      height: 32px; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: .65rem; color: var(--brand-600);
+    }
+
+    /* ═══════════════════════════════
+       ACCESSIBILITY TABLE
+    ═══════════════════════════════ */
+    .a11y-table { width: 100%; border-collapse: collapse; }
+    .a11y-table th {
+      font-family: var(--font-mono); font-size: .65rem; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--n-500); font-weight: 500;
+      padding: .6rem .75rem; text-align: left; border-bottom: 2px solid var(--n-200);
+    }
+    .a11y-table td {
+      padding: .75rem .75rem; font-size: .84rem; border-bottom: 1px solid var(--n-100);
+      color: var(--n-700); vertical-align: middle;
+    }
+    .a11y-table tr:last-child td { border-bottom: none; }
+
+    /* ═══════════════════════════════
+       ANIMATION REFERENCE
+    ═══════════════════════════════ */
+    .anim-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.25rem; border-bottom: 1px solid var(--n-100);
+    }
+    .anim-item:last-child { border-bottom: none; }
+    .anim-name { font-family: var(--font-mono); font-size: .8rem; color: var(--brand-500); }
+    .anim-spec { font-family: var(--font-mono); font-size: .72rem; color: var(--n-500); }
+    .anim-use { font-size: .82rem; color: var(--n-600); }
+
+    /* ═══════════════════════════════
+       FOOTER
+    ═══════════════════════════════ */
+    .page-footer {
+      background: var(--n-900); padding: 3rem;
+      text-align: center;
+    }
+    .page-footer p { font-family: var(--font-mono); font-size: .72rem; color: var(--n-600); }
+    .page-footer strong { color: var(--n-400); }
+
+    @media (max-width: 960px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .radius-grid { grid-template-columns: repeat(3, 1fr); }
+      .shadow-grid { grid-template-columns: repeat(2, 1fr); }
+      .page-section { padding: 2.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     COVER
+══════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-content">
+    <div class="cover-badge">Charte Graphique · Design System v1.0 · Mai 2026</div>
+    <h1 class="cover-title">Charte <em>Graphique</em></h1>
+    <p class="cover-sub">
+      Design system complet de findMe — tokens, typographie, couleurs,
+      composants et règles d'accessibilité pour GeoLink Africa.
+    </p>
+    <div class="toc">
+      <div class="toc-item"><span>01</span>Tokens</div>
+      <div class="toc-item"><span>02</span>Couleurs</div>
+      <div class="toc-item"><span>03</span>Typographie</div>
+      <div class="toc-item"><span>04</span>Espacement</div>
+      <div class="toc-item"><span>05</span>Rayons & Ombres</div>
+      <div class="toc-item"><span>06</span>Boutons</div>
+      <div class="toc-item"><span>07</span>Formulaires</div>
+      <div class="toc-item"><span>08</span>Badges</div>
+      <div class="toc-item"><span>09</span>Alertes</div>
+      <div class="toc-item"><span>10</span>Cartes</div>
+      <div class="toc-item"><span>11</span>Navigation</div>
+      <div class="toc-item"><span>12</span>États</div>
+      <div class="toc-item"><span>13</span>Mode Sombre</div>
+      <div class="toc-item"><span>14</span>Grille</div>
+      <div class="toc-item"><span>15</span>Accessibilité</div>
+      <div class="toc-item"><span>16</span>Animation</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     01 — DESIGN TOKENS
+══════════════════════════════════════════════ -->
+<div class="page-section">
+  <div class="s-tag">01 — Design Tokens</div>
+  <h2 class="s-title">Variables CSS du système</h2>
+  <p class="s-desc">Toutes les valeurs sont déclarées en CSS custom properties et doivent être utilisées comme telles — jamais de valeurs magiques dans le code.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Couleurs — Variables principales</div>
+      <pre style="font-family:var(--font-mono);font-size:.72rem;color:var(--n-700);line-height:1.8;overflow-x:auto;"><code><span style="color:var(--n-500);">/* Brand */</span>
+--brand-500: #1652F0;   <span style="color:var(--n-400);">/* Couleur principale */</span>
+--brand-600: #0D3FBD;   <span style="color:var(--n-400);">/* Hover états */</span>
+--brand-400: #4575FF;   <span style="color:var(--n-400);">/* Mode sombre */</span>
+
+<span style="color:var(--n-500);">/* CTA */</span>
+--accent-500: #FF6830;  <span style="color:var(--n-400);">/* Boutons CTA */</span>
+--accent-600: #C94D20;  <span style="color:var(--n-400);">/* CTA hover */</span>
+
+<span style="color:var(--n-500);">/* Semantic */</span>
+--success-500: #00C9A7;
+--error-500:   #EF4444;
+--warning-500: #F59E0B;
+--info-500:    #06B6D4;</code></pre>
+    </div>
+    <div class="card">
+      <div class="card-title">Tokens d'interface</div>
+      <pre style="font-family:var(--font-mono);font-size:.72rem;color:var(--n-700);line-height:1.8;overflow-x:auto;"><code><span style="color:var(--n-500);">/* Espacement — base 4px */</span>
+--sp-1: 4px;   --sp-2: 8px;
+--sp-3: 12px;  --sp-4: 16px;
+--sp-6: 24px;  --sp-8: 32px;
+--sp-12: 48px; --sp-16: 64px;
+
+<span style="color:var(--n-500);">/* Rayon */</span>
+--r-sm: 4px;   --r-md: 8px;
+--r-lg: 12px;  --r-xl: 16px;
+--r-2xl: 24px; --r-full: 9999px;
+
+<span style="color:var(--n-500);">/* Transition */</span>
+--t-fast: 120ms ease;
+--t-base: 200ms ease;
+--t-slow: 300ms ease;</code></pre>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════
+     02 — COULEURS
+══════════════════════════════════════════════ -->
+<div class="page-section">
+  <div class="s-tag">02 — Système de Couleurs</div>
+  <h2 class="s-title">Palette & Contrastes WCAG</h2>
+  <p class="s-desc">Chaque couleur a un ratio de contraste documenté. Tous les textes d'interface respectent WCAG AA (ratio ≥ 4.5:1).</p>
+
+  <!-- Scales -->
+  <div class="card" style="margin-bottom:1.5rem;">
+    <div class="card-title">Bleu Marque — Brand Scale</div>
+    <div class="color-row">
+      <div class="c" style="background:#EFF5FF;" data-label="50 · #EFF5FF"></div>
+      <div class="c" style="background:#DBEAFE;" data-label="100 · #DBEAFE"></div>
+      <div class="c" style="background:#BFDBFE;" data-label="200"></div>
+      <div class="c" style="background:#93C5FD;" data-label="300"></div>
+      <div class="c" style="background:#4575FF;" data-label="400 · #4575FF"></div>
+      <div class="c" style="background:#1652F0;" data-label="500 · #1652F0 ★"></div>
+      <div class="c" style="background:#0D3FBD;" data-label="600 · #0D3FBD"></div>
+      <div class="c" style="background:#0A2E8A;" data-label="700"></div>
+      <div class="c" style="background:#081F60;" data-label="800"></div>
+      <div class="c" style="background:#050F35;" data-label="900"></div>
+    </div>
+    <div class="color-row" style="margin-top:.75rem;">
+      <div class="c" style="background:#FFF4EF;" data-label="Accent 50"></div>
+      <div class="c" style="background:#FFE0D2;" data-label="Accent 100"></div>
+      <div class="c" style="background:#FFB899;" data-label="Accent 200"></div>
+      <div class="c" style="background:#FF8C5A;" data-label="Accent 400"></div>
+      <div class="c" style="background:#FF6830;" data-label="Accent 500 ★"></div>
+      <div class="c" style="background:#C94D20;" data-label="Accent 600"></div>
+      <div class="c" style="background:#9A3615;" data-label="Accent 700"></div>
+    </div>
+    <div class="color-row" style="margin-top:.75rem;">
+      <div class="c" style="background:#F8FAFF;border:1px solid var(--n-200);" data-label="Neutral 50"></div>
+      <div class="c" style="background:#F1F5F9;" data-label="100"></div>
+      <div class="c" style="background:#E2E8F0;" data-label="200"></div>
+      <div class="c" style="background:#CBD5E1;" data-label="300"></div>
+      <div class="c" style="background:#94A3B8;" data-label="400"></div>
+      <div class="c" style="background:#64748B;" data-label="500"></div>
+      <div class="c" style="background:#475569;" data-label="600"></div>
+      <div class="c" style="background:#334155;" data-label="700"></div>
+      <div class="c" style="background:#1E293B;" data-label="800"></div>
+      <div class="c" style="background:#0A0F1E;" data-label="900"></div>
+    </div>
+  </div>
+
+  <!-- Contrast table -->
+  <div class="card">
+    <div class="card-title">Ratios de Contraste WCAG 2.1</div>
+    <table class="color-token-table">
+      <thead><tr><th>Combinaison</th><th>Ratio</th><th>AA Normal</th><th>AA Large</th><th>AAA</th></tr></thead>
+      <tbody>
+        <tr><td><span class="swatch-inline" style="background:#1652F0;"></span>Brand 500 sur blanc</td><td><span style="font-family:var(--font-mono);">5.12:1</span></td><td><span class="contrast-badge aa">AA ✓</span></td><td><span class="contrast-badge aaa">AAA ✓</span></td><td><span class="contrast-badge fail">✗</span></td></tr>
+        <tr><td><span class="swatch-inline" style="background:#0D3FBD;"></span>Brand 600 sur blanc</td><td><span style="font-family:var(--font-mono);">7.42:1</span></td><td><span class="contrast-badge aaa">AA ✓</span></td><td><span class="contrast-badge aaa">AAA ✓</span></td><td><span class="contrast-badge aaa">AAA ✓</span></td></tr>
+        <tr><td><span class="swatch-inline" style="background:#FF6830;"></span>Accent 500 sur blanc</td><td><span style="font-family:var(--font-mono);">3.21:1</span></td><td><span class="contrast-badge fail">✗ Texte</span></td><td><span class="contrast-badge aa">AA Large ✓</span></td><td><span class="contrast-badge fail">✗</span></td></tr>
+        <tr><td><span class="swatch-inline" style="background:#C94D20;"></span>Accent 600 sur blanc</td><td><span style="font-family:var(--font-mono);">5.58:1</span></td><td><span class="contrast-badge aa">AA ✓</span></td><td><span class="contrast-badge aaa">AAA ✓</span></td><td><span class="contrast-badge fail">✗</span></td></tr>
+        <tr><td><span class="swatch-inline" style="background:#0A0F1E;"></span>Neutral 900 sur blanc</td><td><span style="font-family:var(--font-mono);">19.8:1</span></td><td><span class="contrast-badge aaa">AA ✓</span></td><td><span class="contrast-badge aaa">AAA ✓</span></td><td><span class="contrast-badge aaa">AAA ✓</span></td></tr>
+        <tr><td><span class="swatch-inline" style="background:#475569;"></span>Neutral 600 sur blanc</td><td><span style="font-family:var(--font-mono);">5.91:1</span></td><td><span class="contrast-badge aa">AA ✓</span></td><td><span class="contrast-badge aaa">AAA ✓</span></td><td><span class="contrast-badge fail">✗</span></td></tr>
+        <tr><td><span class="swatch-inline" style="background:#ffffff;border:1px solid #e2e8f0;"></span>Blanc sur Brand 500</td><td><span style="font-family:var(--font-mono);">5.12:1</span></td><td><span class="contrast-badge aa">AA ✓</span></td><td><span class="contrast-badge aaa">AAA ✓</span></td><td><span class="contrast-badge fail">✗</span></td></tr>
+        <tr><td><span class="swatch-inline" style="background:#94A3B8;"></span>Neutral 400 sur blanc</td><td><span style="font-family:var(--font-mono);">2.81:1</span></td><td><span class="contrast-badge fail">✗ Texte</span></td><td><span class="contrast-badge fail">✗</span></td><td><span class="contrast-badge fail">✗</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.75rem;color:var(--n-500);margin-top:1rem;">⚠ Neutral 400 et Accent 500 ne doivent jamais être utilisés pour du texte sur fond blanc — uniquement pour des éléments décoratifs ou grandes typographies (≥18px bold).</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════
+     03 — TYPOGRAPHIE
+══════════════════════════════════════════════ -->
+<div class="page-section">
+  <div class="s-tag">03 — Échelle Typographique</div>
+  <h2 class="s-title">Scale complète</h2>
+
+  <div class="card">
+    <table class="typo-table">
+      <thead>
+        <tr><th>Token</th><th>Taille / Hauteur / Graisse</th><th>Famille</th><th>Aperçu</th><th>Usage</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="typo-token">display-2xl</td>
+          <td class="typo-spec-cell">72px / 1.05 / 800</td>
+          <td class="typo-spec-cell">Plus Jakarta Sans</td>
+          <td class="typo-sample-cell" style="font-family:var(--font-display);font-size:36px;font-weight:800;letter-spacing:-.03em;line-height:1;">Hero Landing</td>
+          <td style="font-size:.75rem;color:var(--n-500);">Hero section landing page uniquement</td>
+        </tr>
+        <tr>
+          <td class="typo-token">display-xl</td>
+          <td class="typo-spec-cell">56px / 1.1 / 700</td>
+          <td class="typo-spec-cell">Plus Jakarta Sans</td>
+          <td class="typo-sample-cell" style="font-family:var(--font-display);font-size:28px;font-weight:700;letter-spacing:-.025em;line-height:1.1;">Titre principal</td>
+          <td style="font-size:.75rem;color:var(--n-500);">H1 de page, modals importantes</td>
+        </tr>
+        <tr>
+          <td class="typo-token">heading-xl</td>
+          <td class="typo-spec-cell">40px / 1.2 / 700</td>
+          <td class="typo-spec-cell">Plus Jakarta Sans</td>
+          <td class="typo-sample-cell" style="font-family:var(--font-display);font-size:24px;font-weight:700;letter-spacing:-.02em;">Section title</td>
+          <td style="font-size:.75rem;color:var(--n-500);">H2, titres de section</td>
+        </tr>
+        <tr>
+          <td class="typo-token">heading-lg</td>
+          <td class="typo-spec-cell">32px / 1.25 / 700</td>
+          <td class="typo-spec-cell">Plus Jakarta Sans</td>
+          <td class="typo-sample-cell" style="font-family:var(--font-display);font-size:20px;font-weight:700;">Sous-titre</td>
+          <td style="font-size:.75rem;color:var(--n-500);">H3, titres de carte, modal header</td>
+        </tr>
+        <tr>
+          <td class="typo-token">heading-md</td>
+          <td class="typo-spec-cell">24px / 1.3 / 600</td>
+          <td class="typo-spec-cell">Plus Jakarta Sans</td>
+          <td class="typo-sample-cell" style="font-family:var(--font-display);font-size:17px;font-weight:600;">Nom adresse</td>
+          <td style="font-size:.75rem;color:var(--n-500);">H4, card titles, form section</td>
+        </tr>
+        <tr>
+          <td class="typo-token">heading-sm</td>
+          <td class="typo-spec-cell">20px / 1.4 / 600</td>
+          <td class="typo-spec-cell">Plus Jakarta Sans</td>
+          <td class="typo-sample-cell" style="font-family:var(--font-display);font-size:15px;font-weight:600;">Quartier · Douala</td>
+          <td style="font-size:.75rem;color:var(--n-500);">H5–H6, list item titles</td>
+        </tr>
+        <tr>
+          <td class="typo-token">body-lg</td>
+          <td class="typo-spec-cell">18px / 1.75 / 400</td>
+          <td class="typo-spec-cell">Inter</td>
+          <td class="typo-sample-cell" style="font-size:14px;line-height:1.6;">Texte de description principale, introductions de section.</td>
+          <td style="font-size:.75rem;color:var(--n-500);">Paragraphes principaux, landing</td>
+        </tr>
+        <tr>
+          <td class="typo-token">body</td>
+          <td class="typo-spec-cell">16px / 1.625 / 400</td>
+          <td class="typo-spec-cell">Inter</td>
+          <td class="typo-sample-cell" style="font-size:13px;">Corps de texte standard pour les formulaires et contenus.</td>
+          <td style="font-size:.75rem;color:var(--n-500);">Corps standard, formulaires</td>
+        </tr>
+        <tr>
+          <td class="typo-token">body-sm</td>
+          <td class="typo-spec-cell">14px / 1.5 / 400</td>
+          <td class="typo-spec-cell">Inter</td>
+          <td class="typo-sample-cell" style="font-size:12px;color:var(--n-600);">Messages d'aide, descriptions secondaires.</td>
+          <td style="font-size:.75rem;color:var(--n-500);">Hints, descriptions secondaires</td>
+        </tr>
+        <tr>
+          <td class="typo-token">caption</td>
+          <td class="typo-spec-cell">12px / 1.4 / 500</td>
+          <td class="typo-spec-cell">Inter</td>
+          <td class="typo-sample-cell" style="font-size:11px;font-weight:500;color:var(--n-500);text-transform:uppercase;letter-spacing:.04em;">LABEL CHAMP</td>
+          <td style="font-size:.75rem;color:var(--n-500);">Labels uppercase, timestamps</td>
+        </tr>
+        <tr>
+          <td class="typo-token">mono-lg</td>
+          <td class="typo-spec-cell">20px / 1.3 / 500</td>
+          <td class="typo-spec-cell">JetBrains Mono</td>
+          <td class="typo-sample-cell" style="font-family:var(--font-mono);font-size:14px;color:var(--brand-500);">GL-DLA-00412</td>
+          <td style="font-size:.75rem;color:var(--n-500);">Codes d'adresse, IDs</td>
+        </tr>
+        <tr>
+          <td class="typo-token">mono</td>
+          <td class="typo-spec-cell">14px / 1.4 / 400</td>
+          <td class="typo-spec-cell">JetBrains Mono</td>
+          <td class="typo-sample-cell" style="font-family:var(--font-mono);font-size:12px;color:var(--n-600);">3.8667°N · 11.5167°E</td>
+          <td style="font-size:.75rem;color:var(--n-500);">Coordonnées GPS, tags</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════
+     04 — ESPACEMENT
+══════════════════════════════════════════════ -->
+<div class="page-section">
+  <div class="s-tag">04 — Système d'Espacement</div>
+  <h2 class="s-title">Grille de 4px</h2>
+  <div class="card">
+    <div class="spacing-row">
+      <div class="spacing-block" style="width:4px;"></div>
+      <span class="spacing-token">--sp-1</span><span class="spacing-px">4px</span>
+      <span class="spacing-use">Espacement micro — séparation icône/texte, gap minimal</span>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-block" style="width:8px;"></div>
+      <span class="spacing-token">--sp-2</span><span class="spacing-px">8px</span>
+      <span class="spacing-use">Gap interne de badge, espacement input icon</span>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-block" style="width:12px;"></div>
+      <span class="spacing-token">--sp-3</span><span class="spacing-px">12px</span>
+      <span class="spacing-use">Padding bouton sm, gap petits éléments</span>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-block" style="width:16px;"></div>
+      <span class="spacing-token">--sp-4</span><span class="spacing-px">16px</span>
+      <span class="spacing-use">Padding bouton standard, espacement base (1rem)</span>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-block" style="width:20px;"></div>
+      <span class="spacing-token">--sp-5</span><span class="spacing-px">20px</span>
+      <span class="spacing-use">Padding horizontal input, espacement liste</span>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-block" style="width:24px;"></div>
+      <span class="spacing-token">--sp-6</span><span class="spacing-px">24px</span>
+      <span class="spacing-use">Padding interne card, gap entre groupes de form</span>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-block" style="width:32px;"></div>
+      <span class="spacing-token">--sp-8</span><span class="spacing-px">32px</span>
+      <span class="spacing-use">Margin entre sections d'une même page</span>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-block" style="width:48px;"></div>
+      <span class="spacing-token">--sp-12</span><span class="spacing-px">48px</span>
+      <span class="spacing-use">Padding section principale, espacement vertical</span>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-block" style="width:64px;"></div>
+      <span class="spacing-token">--sp-16</span><span class="spacing-px">64px</span>
+      <span class="spacing-use">Séparation entre sections de page majeures</span>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-block" style="width:80px;"></div>
+      <span class="spacing-token">--sp-20</span><span class="spacing-px">80px</span>
+      <span class="spacing-use">Padding vertical des sections landing page</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════
+     05 — RAYONS & OMBRES
+══════════════════════════════════════════════ -->
+<div class="page-section">
+  <div class="s-tag">05 — Rayons & Ombres</div>
+  <h2 class="s-title">Border radius & Élévations</h2>
+
+  <div class="card" style="margin-bottom:1.5rem;">
+    <div class="card-title">Border Radius</div>
+    <div class="radius-grid">
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:4px;"></div>
+        <div class="radius-label">--r-sm<br>4px<br>Tags</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:8px;"></div>
+        <div class="radius-label">--r-md<br>8px<br>Btns sm</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:12px;"></div>
+        <div class="radius-label">--r-lg<br>12px<br>Inputs / Btns</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:16px;"></div>
+        <div class="radius-label">--r-xl<br>16px<br>Cards</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:24px;"></div>
+        <div class="radius-label">--r-2xl<br>24px<br>Modals</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:9999px;"></div>
+        <div class="radius-label">--r-full<br>9999px<br>Badges / Pills</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Élévations (Shadows)</div>
+    <div class="shadow-grid">
+      <div>
+        <div class="shadow-item" style="box-shadow:var(--shadow-sm);"></div>
+        <div class="shadow-caption">--shadow-sm<br>Cartes repos</div>
+      </div>
+      <div>
+        <div class="shadow-item" style="box-shadow:var(--shadow-md);"></div>
+        <div class="shadow-caption">--shadow-md<br>Cartes hover</div>
+      </div>
+      <div>
+        <div class="shadow-item" style="box-shadow:var(--shadow-lg);"></div>
+        <div class="shadow-caption">--shadow-lg<br>Dropdowns</div>
+      </div>
+      <div>
+        <div class="shadow-item" style="box-shadow:var(--shadow-brand);background:var(--brand-50);"></div>
+        <div class="shadow-caption">--shadow-brand<br>Btn Primary</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════
+     06 — BOUTONS
+══════════════════════════════════════════════ -->
+<div class="page-section">
+  <div class="s-tag">06 — Boutons</div>
+  <h2 class="s-title">Composant Button</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Variantes</div>
+      <div class="btn-row">
+        <button class="btn btn-primary">Créer adresse</button>
+        <button class="btn btn-accent">Commencer</button>
+        <button class="btn btn-secondary">En savoir plus</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-ghost">Annuler</button>
+        <button class="btn btn-danger">Supprimer</button>
+        <button class="btn btn-dark">Mode sombre</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Tailles</div>
+      <div class="btn-row" style="align-items:center;">
+        <button class="btn btn-primary btn-sm">Petit</button>
+        <button class="btn btn-primary">Défaut</button>
+        <button class="btn btn-primary btn-lg">Large</button>
+        <button class="btn btn-primary btn-xl">XL</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">États</div>
+      <div class="btn-row">
+        <button class="btn btn-primary">Actif</button>
+        <button class="btn btn-primary btn-loading">Chargement</button>
+        <button class="btn btn-primary btn-disabled">Désactivé</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-secondary">Actif</button>
+        <button class="btn btn-secondary btn-disabled">Désactivé</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Avec icônes & Plein largeur</div>
+      <div class="btn-row">
+        <button class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Géolocaliser
+        </button>
+        <button class="btn btn-ghost btn-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </button>
+      </div>
+      <button class="btn btn-accent btn-full" style="margin-top:.5rem;">Créer mon adresse numérique</button>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.5rem;background:var(--n-900);">
+    <div class="card-title" style="color:var(--n-400);">Boutons sur fond sombre</div>
+    <div class="btn-row">
+      <button class="btn btn-primary">Créer adresse</button>
+      <button class="btn btn-accent">Commencer</button>
+      <button class="btn" style="background:rgba(255,255,255,.1);color:white;border:1px solid rgba(255,255,255,.15);">Voir plus</button>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════
+     07 — FORMULAIRES
+══════════════════════════════════════════════ -->
+<div class="page-section">
+  <div class="s-tag">07 — Formulaires & Inputs</div>
+  <h2 class="s-title">Composants de saisie</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">États des inputs</div>
+      <div class="form-group">
+        <label class="form-label">Quartier <span class="required">*</span></label>
+        <input class="form-input" type="text" placeholder="Ex: Bonanjo, Akwa...">
+        <div class="form-hint">Entrez le nom du quartier tel qu'il est connu localement.</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Rue <span class="required">*</span></label>
+        <input class="form-input" type="text" placeholder="Rue Alfred Saker...">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input is-success" type="email" value="christian@exemple.com">
+        <div class="form-success-msg">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Email valide
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Numéro de domicile <span class="required">*</span></label>
+        <input class="form-input is-error" type="text" value="abc">
+        <div class="form-error">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Ce champ doit être un numéro (ex: 42).
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Pays</label>
+        <input class="form-input" type="text" value="Cameroun" disabled>
+        <div class="form-hint">Champ désactivé — détecté automatiquement.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Inputs spéciaux</div>
+      <div class="form-group">
+        <label class="form-label">Rechercher une adresse</label>
+        <div class="input-with-icon">
+          <div class="input-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <input class="form-input" type="text" placeholder="Rechercher...">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message de support</label>
+        <textarea class="form-textarea" placeholder="Décrivez votre problème..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Ville</label>
+        <div class="input-group">
+          <input class="form-input" type="text" placeholder="Douala">
+          <button class="btn btn-primary">Valider</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Mot de passe <span class="required">*</span></label>
+        <input class="form-input" type="password" value="MonMot2Pass">
+        <div class="pwd-strength">
+          <div class="pwd-bar">
+            <div class="pwd-seg active-strong"></div>
+            <div class="pwd-seg active-strong"></div>
+            <div class="pwd-seg active-strong"></div>
+            <div class="pwd-seg"></div>
+          </div>
+          <span style="font-size:.75rem;color:var(--success-600);font-weight:500;">Bon — ajoutez un caractère spécial pour maximiser.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stepper -->
+  <div class="card" style="margin-top:1.5rem;">
+    <div class="card-title">Stepper de création d'adresse</div>
+    <div class="stepper">
+      <div class="step step-done">
+        <div class="step-circle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="step-label">Localisation</span>
+      </div>
+      <div class="step-line done"></div>
+      <div class="step step-active">
+        <div class="step-circle">2</div>
+        <span class="step-label">Détails</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step step-pending">
+        <div class="step-circle">3</div>
+        <span class="step-label">Photo</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step step-pending">
+        <div class="step-circle">4</div>
+        <span class="step-label">Validation</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════
+     08 — BADGES
+══════════════════════════════════════════════ -->
+<div class="page-section">
+  <div class="s-tag">08 — Badges & Tags</div>
+  <h2 class="s-title">Indicateurs d'état</h2>
+  <div class="card">
+    <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;">
+      <span class="badge badge-brand"><span class="badge-dot" style="background:var(--brand-500);"></span>Principale</span>
+      <span class="badge badge-success"><span class="badge-dot" style="background:var(--success-500);"></span>Vérifiée</span>
+      <span class="badge badge-error"><span class="badge-dot" style="background:var(--error-500);"></span>Erreur</span>
+      <span class="badge badge-warning"><span class="badge-dot" style="background:var(--warning-500);"></span>En attente</span>
+      <span class="badge badge-info">Nouvelle</span>
+      <span class="badge badge-neutral">Brouillon</span>
+      <span class="badge badge-dark">Admin</span>
+      <span class="badge" style="background:rgba(22,82,240,.1);color:var(--brand-600);font-family:var(--font-mono);">GL-DLA-00412</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════
+     09 — ALERTES
+══════════════════════════════════════════════ -->
+<div class="page-section">
+  <div class="s-tag">09 — Alertes & Feedback</div>
+  <h2 class="s-title">Messages système</h2>
+  <div class="card">
+    <div class="alert alert-success">
+      <div class="alert-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+      <div class="alert-body"><div class="alert-title">Adresse créée avec succès</div><div class="alert-desc">Votre adresse numérique GL-DLA-00412 est maintenant active et partageable.</div></div>
+    </div>
+    <div class="alert alert-error">
+      <div class="alert-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+      <div class="alert-body"><div class="alert-title">Limite d'adresses atteinte</div><div class="alert-desc">Vous avez atteint la limite de 4 adresses. Supprimez une adresse existante pour en créer une nouvelle.</div></div>
+    </div>
+    <div class="alert alert-warning">
+      <div class="alert-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+      <div class="alert-body"><div class="alert-title">Brouillon non sauvegardé</div><div class="alert-desc">Vos modifications n'ont pas été enregistrées. Cliquez sur Sauvegarder pour ne pas perdre vos données.</div></div>
+    </div>
+    <div class="alert alert-info">
+      <div class="alert-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <div class="alert-body"><div class="alert-title">Géolocalisation disponible</div><div class="alert-desc">Activez la géolocalisation pour positionner automatiquement votre adresse sur la carte.</div></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════
+     10 — CARTES
+══════════════════════════════════════════════ -->
+<div class="page-section">
+  <div class="s-tag">10 — Cartes</div>
+  <h2 class="s-title">Address Card & Stat Cards</h2>
+
+  <div class="grid-3" style="margin-bottom:1.5rem;">
+    <!-- Address Card 1 -->
+    <div class="address-card">
+      <div class="address-card-img">
+        <div class="addr-map-bg"></div>
+        <div class="addr-img-overlay"></div>
+        <div class="addr-pin">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="28" height="34">
+            <path d="M12 0C7.58 0 4 3.58 4 8C4 14 12 24 12 24S20 14 20 8C20 3.58 16.42 0 12 0Z" fill="#1652F0"/>
+            <circle cx="12" cy="8" r="3.5" fill="white" opacity=".95"/>
+          </svg>
+        </div>
+      </div>
+      <div class="address-card-body">
+        <div class="address-card-header">
+          <div>
+            <div class="address-card-title">12, Rue de la Paix</div>
+            <div class="address-card-sub">Bonanjo · Douala · Cameroun</div>
+          </div>
+          <span class="badge badge-brand">Principale</span>
+        </div>
+        <div class="address-card-coord">3.8667°N · 11.5167°E · GL-DLA-00412</div>
+      </div>
+      <div class="address-card-actions">
+        <button class="addr-action-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Modifier
+        </button>
+        <button class="addr-action-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          PDF
+        </button>
+        <button class="addr-action-btn danger">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+          Suppr.
+        </button>
+      </div>
+    </div>
+
+    <!-- Address Card 2 (skeleton) -->
+    <div class="address-card">
+      <div class="address-card-img" style="background:var(--n-900);">
+        <div class="addr-map-bg"></div>
+        <div class="addr-img-overlay"></div>
+        <div class="addr-pin">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" width="28" height="34">
+            <path d="M12 0C7.58 0 4 3.58 4 8C4 14 12 24 12 24S20 14 20 8C20 3.58 16.42 0 12 0Z" fill="#FF6830"/>
+            <circle cx="12" cy="8" r="3.5" fill="white" opacity=".95"/>
+          </svg>
+        </div>
+      </div>
+      <div class="address-card-body">
+        <div class="address-card-header">
+          <div>
+            <div class="address-card-title">Av. Ahmadou Ahidjo</div>
+            <div class="address-card-sub">Centre · Yaoundé · Cameroun</div>
+          </div>
+          <span class="badge badge-neutral">Bureau</span>
+        </div>
+        <div class="address-card-coord">3.8667°N · 11.5167°E · GL-YDE-00087</div>
+      </div>
+      <div class="address-card-actions">
+        <button class="addr-action-btn">Modifier</button>
+        <button class="addr-action-btn">PDF</button>
+        <button class="addr-action-btn danger">Suppr.</button>
+      </div>
+    </div>
+
+    <!-- Address Card 3 (empty/brouillon) -->
+    <div class="address-card" style="border:2px dashed var(--n-300);background:var(--n-50);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px;gap:1rem;padding:2rem;text-align:center;">
+      <div style="width:52px;height:52px;border-radius:var(--r-xl);background:var(--brand-50);display:flex;align-items:center;justify-content:center;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand-500)" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </div>
+      <div>
+        <div style="font-family:var(--font-display);font-weight:600;font-size:.95rem;color:var(--n-700);margin-bottom:.3rem;">Nouvelle adresse</div>
+        <div style="font-size:.8rem;color:var(--n-500);">Il vous reste 2 emplacements (max. 4)</div>
+      </div>
+      <button class="btn btn-secondary btn-sm">Créer une adresse</button>
+    </div>
+  </div>
+
+  <!-- Stat Cards -->
+  <div class="grid-4">
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:var(--brand-50);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--brand-500)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="stat-card-value">2/4</div>
+      <div class="stat-card-label">Adresses créées</div>
+      <div class="stat-card-trend trend-up">↑ Ajoutez-en 2 de plus</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:var(--success-50);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--success-500)" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="stat-card-value">12</div>
+      <div class="stat-card-label">PDF exportés</div>
+      <div class="stat-card-trend trend-up">↑ +3 ce mois</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:var(--accent-50);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-500)" stroke-width="1.5"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      </div>
+      <div class="stat-card-value">5</div>
+      <div class="stat-card-label">Partages</div>
+      <div class="stat-card-trend trend-up">Cette semaine</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:var(--n-100);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--n-500)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="stat-card-value">2j</div>
+      <div class="stat-card-label">Dernière activité</div>
+      <div class="stat-card-trend" style="color:var(--n-500);">15 Mai 2026</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════
+     11 — NAVIGATION
+══════════════════════════════════════════════ -->
+<div class="page-section">
+  <div class="s-tag">11 — Navigation</div>
+  <h2 class="s-title">Navbar & Tabs</h2>
+  <div class="nav-demo">
+    <div class="navbar">
+      <div class="nav-logo">findMe</div>
+      <a href="#" class="nav-link active">Mes adresses</a>
+      <a href="#" class="nav-link">Carte</a>
+      <a href="#" class="nav-link">Support</a>
+      <button class="btn btn-primary btn-sm">Créer</button>
+    </div>
+    <div class="nav-content">
+      <div class="tab-bar">
+        <div class="tab-item active">Toutes (2)</div>
+        <div class="tab-item">Domicile</div>
+        <div class="tab-item">Bureau</div>
+        <div class="tab-item">Autre</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════
+     12 — ÉTATS DE CHARGEMENT
+══════════════════════════════════════════════ -->
+<div class="page-section">
+  <div class="s-tag">12 — États de Chargement & Vide</div>
+  <h2 class="s-title">Loading, Skeleton, Empty</h2>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">Skeleton Loader</div>
+      <div style="display:flex;flex-direction:column;gap:.75rem;">
+        <div class="skeleton" style="height:160px;border-radius:var(--r-lg);"></div>
+        <div class="skeleton" style="height:16px;width:60%;"></div>
+        <div class="skeleton" style="height:12px;width:40%;"></div>
+        <div class="skeleton" style="height:12px;width:80%;"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Spinners</div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:1.5rem;padding:1rem 0;">
+        <div class="spinner"></div>
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <button class="btn btn-primary" style="display:flex;align-items:center;gap:.5rem;">
+            <div class="spinner-sm"></div>
+            Sauvegarde...
+          </button>
+        </div>
+        <div style="font-size:.85rem;color:var(--n-500);">Toujours accompagné d'un label textuel</div>
+      </div>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:220px;gap:1rem;">
+      <div style="width:64px;height:64px;border-radius:var(--r-2xl);background:var(--n-100);display:flex;align-items:center;justify-content:center;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--n-400)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div>
+        <div style="font-family:var(--font-display);font-weight:600;color:var(--n-700);margin-bottom:.4rem;">Aucune adresse</div>
+        <div style="font-size:.84rem;color:var(--n-500);">Créez votre première adresse numérique</div>
+      </div>
+      <button class="btn btn-primary btn-sm">Créer une adresse</button>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════
+     13 — MODE SOMBRE
+══════════════════════════════════════════════ -->
+<div class="page-section">
+  <div class="s-tag">13 — Mode Sombre</div>
+  <h2 class="s-title">Dark Mode Preview</h2>
+  <div class="dark-preview">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;">
+      <div style="font-family:var(--font-display);font-weight:800;font-size:1.25rem;color:var(--brand-400);">findMe</div>
+      <div style="display:flex;gap:.75rem;">
+        <button class="btn btn-sm" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.1);">Carte</button>
+        <button class="btn btn-primary btn-sm">Créer</button>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="dark-card">
+        <div style="font-family:var(--font-display);font-weight:600;font-size:.95rem;color:white;margin-bottom:1rem;">Nouvelle adresse</div>
+        <div style="margin-bottom:.75rem;">
+          <label style="display:block;font-size:.8rem;color:rgba(255,255,255,.5);margin-bottom:.4rem;">Quartier</label>
+          <input class="dark-input" type="text" placeholder="Entrez le quartier...">
+        </div>
+        <div>
+          <label style="display:block;font-size:.8rem;color:rgba(255,255,255,.5);margin-bottom:.4rem;">Rue</label>
+          <input class="dark-input" type="text" placeholder="Nom de la rue...">
+        </div>
+        <button class="btn btn-primary btn-full" style="margin-top:1rem;">Enregistrer</button>
+      </div>
+      <div>
+        <div style="font-family:var(--font-mono);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem;">Couleurs Dark Mode</div>
+        <div style="display:flex;flex-direction:column;gap:.5rem;">
+          <div style="display:flex;align-items:center;gap:.75rem;"><div style="width:32px;height:18px;border-radius:4px;background:var(--n-900);border:1px solid rgba(255,255,255,.1);"></div><span style="font-family:var(--font-mono);font-size:.72rem;color:rgba(255,255,255,.5);">#0A0F1E · Background</span></div>
+          <div style="display:flex;align-items:center;gap:.75rem;"><div style="width:32px;height:18px;border-radius:4px;background:var(--n-800);"></div><span style="font-family:var(--font-mono);font-size:.72rem;color:rgba(255,255,255,.5);">#1E293B · Surface</span></div>
+          <div style="display:flex;align-items:center;gap:.75rem;"><div style="width:32px;height:18px;border-radius:4px;background:var(--n-700);"></div><span style="font-family:var(--font-mono);font-size:.72rem;color:rgba(255,255,255,.5);">#334155 · Input BG</span></div>
+          <div style="display:flex;align-items:center;gap:.75rem;"><div style="width:32px;height:18px;border-radius:4px;background:var(--brand-400);"></div><span style="font-family:var(--font-mono);font-size:.72rem;color:rgba(255,255,255,.5);">#4575FF · Brand Dark</span></div>
+          <div style="display:flex;align-items:center;gap:.75rem;"><div style="width:32px;height:18px;border-radius:4px;background:white;"></div><span style="font-family:var(--font-mono);font-size:.72rem;color:rgba(255,255,255,.5);">#FFFFFF · Text Primary</span></div>
+          <div style="display:flex;align-items:center;gap:.75rem;"><div style="width:32px;height:18px;border-radius:4px;background:rgba(255,255,255,.5);"></div><span style="font-family:var(--font-mono);font-size:.72rem;color:rgba(255,255,255,.5);">rgba(255,255,255,.5) · Text Secondary</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════
+     14 — GRILLE
+══════════════════════════════════════════════ -->
+<div class="page-section">
+  <div class="s-tag">14 — Système de Grille</div>
+  <h2 class="s-title">Grid & Breakpoints</h2>
+  <div class="card">
+    <div class="card-title">12 colonnes · Gap 24px · Max-width 1280px</div>
+    <div class="grid-demo">
+      <div class="grid-cols" style="grid-template-columns:repeat(12,1fr);">
+        <div class="grid-col-cell">1</div><div class="grid-col-cell">2</div>
+        <div class="grid-col-cell">3</div><div class="grid-col-cell">4</div>
+        <div class="grid-col-cell">5</div><div class="grid-col-cell">6</div>
+        <div class="grid-col-cell">7</div><div class="grid-col-cell">8</div>
+        <div class="grid-col-cell">9</div><div class="grid-col-cell">10</div>
+        <div class="grid-col-cell">11</div><div class="grid-col-cell">12</div>
+      </div>
+      <div class="grid-cols" style="grid-template-columns:repeat(3,1fr);">
+        <div class="grid-col-cell" style="grid-column:span 8;background:rgba(22,82,240,.2);">Contenu principal — 8 col</div>
+        <div class="grid-col-cell" style="grid-column:span 4;background:rgba(0,201,167,.15);">Sidebar — 4 col</div>
+      </div>
+      <div class="grid-cols" style="grid-template-columns:repeat(3,1fr);">
+        <div class="grid-col-cell">4 col</div>
+        <div class="grid-col-cell">4 col</div>
+        <div class="grid-col-cell">4 col</div>
+      </div>
+    </div>
+    <table class="a11y-table" style="margin-top:1.5rem;">
+      <thead><tr><th>Breakpoint</th><th>Largeur</th><th>Colonnes</th><th>Gutter</th></tr></thead>
+      <tbody>
+        <tr><td><span style="font-family:var(--font-mono);">xs</span></td><td>&lt; 480px</td><td>4 colonnes</td><td>16px</td></tr>
+        <tr><td><span style="font-family:var(--font-mono);">sm</span></td><td>480–767px</td><td>4 colonnes</td><td>16px</td></tr>
+        <tr><td><span style="font-family:var(--font-mono);">md</span></td><td>768–1023px</td><td>8 colonnes</td><td>20px</td></tr>
+        <tr><td><span style="font-family:var(--font-mono);">lg</span></td><td>1024–1279px</td><td>12 colonnes</td><td>24px</td></tr>
+        <tr><td><span style="font-family:var(--font-mono);">xl</span></td><td>≥ 1280px</td><td>12 colonnes</td><td>24px · max 1280px</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════
+     15 — ACCESSIBILITÉ
+══════════════════════════════════════════════ -->
+<div class="page-section">
+  <div class="s-tag">15 — Accessibilité WCAG 2.1</div>
+  <h2 class="s-title">Règles non négociables</h2>
+  <div class="card">
+    <table class="a11y-table">
+      <thead><tr><th>Critère</th><th>Règle</th><th>Implémentation Nuxt/Vue</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-error" style="font-size:.65rem;">Contraste</span></td>
+          <td>Ratio ≥ 4.5:1 pour texte normal, ≥ 3:1 pour texte large</td>
+          <td style="font-family:var(--font-mono);font-size:.72rem;color:var(--n-600);">N'utilisez jamais Neutral 400 pour du texte</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-warning" style="font-size:.65rem;">Focus</span></td>
+          <td>Outline visible sur tous les éléments interactifs au focus clavier</td>
+          <td style="font-family:var(--font-mono);font-size:.72rem;color:var(--n-600);">:focus-visible avec outline 3px brand-400 + offset 3px</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-brand" style="font-size:.65rem;">ARIA</span></td>
+          <td>Labels sémantiques sur tous les formulaires et boutons icône</td>
+          <td style="font-family:var(--font-mono);font-size:.72rem;color:var(--n-600);">aria-label, aria-describedby, role="alert" sur erreurs</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-success" style="font-size:.65rem;">Cible touch</span></td>
+          <td>Zone de clic minimale 44×44px sur mobile</td>
+          <td style="font-family:var(--font-mono);font-size:.72rem;color:var(--n-600);">min-height: 44px sur tous les éléments interactifs</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-neutral" style="font-size:.65rem;">Motion</span></td>
+          <td>Respecter prefers-reduced-motion</td>
+          <td style="font-family:var(--font-mono);font-size:.72rem;color:var(--n-600);">@media (prefers-reduced-motion: reduce) { animation: none }</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-info" style="font-size:.65rem;">HTML</span></td>
+          <td>Structure sémantique stricte (main, header, nav, section, article)</td>
+          <td style="font-family:var(--font-mono);font-size:.72rem;color:var(--n-600);">Un seul &lt;h1&gt; par page, hiérarchie H1→H6 respectée</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-warning" style="font-size:.65rem;">Images</span></td>
+          <td>Alt text descriptif sur toutes les images, alt="" si décoratif</td>
+          <td style="font-family:var(--font-mono);font-size:.72rem;color:var(--n-600);">NuxtImg avec alt obligatoire, SVG avec aria-hidden si déco</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-brand" style="font-size:.65rem;">Erreurs</span></td>
+          <td>Messages d'erreur précis et exploitables, jamais "Erreur inconnue"</td>
+          <td style="font-family:var(--font-mono);font-size:.72rem;color:var(--n-600);">role="alert" ou aria-live="polite" sur les zones d'erreur</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════
+     16 — ANIMATION
+══════════════════════════════════════════════ -->
+<div class="page-section">
+  <div class="s-tag">16 — Principes d'Animation</div>
+  <h2 class="s-title">Motion Design</h2>
+  <div class="card">
+    <div class="anim-item">
+      <div><div class="anim-name">--t-fast</div><div class="anim-use" style="margin-top:.2rem;">Hover buttons, badges, micro-interactions</div></div>
+      <div class="anim-spec">120ms · ease</div>
+    </div>
+    <div class="anim-item">
+      <div><div class="anim-name">--t-base</div><div class="anim-use" style="margin-top:.2rem;">Focus rings, input states, card hover, nav links</div></div>
+      <div class="anim-spec">200ms · ease</div>
+    </div>
+    <div class="anim-item">
+      <div><div class="anim-name">--t-slow</div><div class="anim-use" style="margin-top:.2rem;">Modals, dropdowns, page transitions, overlays</div></div>
+      <div class="anim-spec">300ms · ease</div>
+    </div>
+    <div class="anim-item">
+      <div><div class="anim-name">Page Transition</div><div class="anim-use" style="margin-top:.2rem;">Nuxt transitions entre pages — fade + léger translateY</div></div>
+      <div class="anim-spec">250ms · ease-out · translateY(6px)→(0)</div>
+    </div>
+    <div class="anim-item">
+      <div><div class="anim-name">Skeleton shimmer</div><div class="anim-use" style="margin-top:.2rem;">Loading states — passage de lumière gauche→droite</div></div>
+      <div class="anim-spec">1.4s · ease-in-out · infinite</div>
+    </div>
+    <div class="anim-item">
+      <div><div class="anim-name">Spin (loader)</div><div class="anim-use" style="margin-top:.2rem;">Boutons en état loading, spinners globaux</div></div>
+      <div class="anim-spec">0.7s · linear · infinite</div>
+    </div>
+    <div style="margin-top:1.25rem;padding:1rem;background:var(--warning-50);border-radius:var(--r-lg);border:1px solid rgba(245,158,11,.2);">
+      <p style="font-size:.82rem;color:var(--warning-600);line-height:1.6;">
+        <strong>Règle absolue :</strong> Toujours implémenter <code style="font-family:var(--font-mono);background:rgba(245,158,11,.15);padding:.1rem .3rem;border-radius:3px;">@media (prefers-reduced-motion: reduce)</code>
+        pour désactiver les animations non essentielles. Les spinners de chargement restent actifs car ils transmettent une information fonctionnelle.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<div class="page-footer">
+  <p><strong>findMe / GeoLink Africa</strong> — Charte Graphique · Design System v1.0 — Mai 2026</p>
+  <p style="margin-top:.4rem;">Livrable L2 · Projet 4 · DHI Academy · Développeur Full Stack</p>
+</div>
+
+</body>
+</html>
