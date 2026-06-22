@@ -38,6 +38,9 @@ export default defineNuxtConfig({
   // FR / EN, instant switch, persisted choice. Default locale (fr) has no
   // URL prefix; English is served under /en.
   i18n: {
+    // URL absolue du site — requise pour des liens hreflang/canonical valides.
+    // À surcharger en production via NUXT_PUBLIC_SITE_URL.
+    baseUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://findme.geolink.africa',
     locales: [
       { code: 'fr', language: 'fr-CM', name: 'Français', file: 'fr.json' },
       { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
