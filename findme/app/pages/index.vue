@@ -11,6 +11,29 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
+// Données structurées (SEO) — Organisation + service.
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'findMe — GeoLink Africa',
+        url: 'https://findme.geolink.africa',
+        description:
+          'Plateforme d\'adressage numérique normalisé (Address-as-a-Service) en Afrique.',
+        areaServed: 'CM',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Douala',
+          addressCountry: 'CM',
+        },
+      }),
+    },
+  ],
+})
+
 const steps = computed(() => [
   { icon: 'lucide:locate-fixed', title: t('how.step1Title'), desc: t('how.step1Desc') },
   { icon: 'lucide:clipboard-list', title: t('how.step2Title'), desc: t('how.step2Desc') },
