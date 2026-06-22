@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "primary": "Navigation principale",
+    "home": "Accueil",
+    "how": "Comment ça marche",
+    "support": "Support",
+    "signin": "Connexion",
+    "signup": "Créer un compte"
+  },
+  "a11y": {
+    "skipToContent": "Aller au contenu principal"
+  },
+  "hero": {
+    "badge": "Address-as-a-Service · Afrique",
+    "title": "Votre adresse, enfin",
+    "titleHighlight": "trouvable.",
+    "subtitle": "Créez une adresse numérique normalisée en moins de 2 minutes. Géolocalisation assistée, document officiel PDF et QR code — partagez une position fiable, partout au Cameroun.",
+    "ctaPrimary": "Créer mon adresse",
+    "ctaSecondary": "Voir comment ça marche",
+    "statUsers": "utilisateurs actifs",
+    "statAddresses": "adresses créées",
+    "statCities": "villes couvertes"
+  },
+  "how": {
+    "tag": "Simple et rapide",
+    "title": "Trois étapes, une adresse fiable",
+    "subtitle": "Fini les « derrière l'église » ou « après le carrefour ». findMe transforme votre position en une adresse exploitable par les livreurs, services d'urgence et institutions.",
+    "step1Title": "Localisez-vous",
+    "step1Desc": "Activez la géolocalisation ou déplacez le marqueur sur la carte pour positionner précisément votre domicile.",
+    "step2Title": "Complétez les détails",
+    "step2Desc": "Pays, ville, quartier, rue et une photo du bâtiment. Un formulaire guidé, sauvegardé automatiquement.",
+    "step3Title": "Partagez votre adresse",
+    "step3Desc": "Téléchargez votre document officiel avec QR code, ou partagez le lien. Votre adresse devient universelle."
+  },
+  "demo": {
+    "tag": "Aperçu produit",
+    "title": "Pensé pour le mobile, conçu pour la confiance",
+    "subtitle": "Plus de 80 % de nos utilisateurs accèdent depuis un smartphone. Chaque écran est optimisé pour être rapide, lisible et accessible."
+  },
+  "testimonials": {
+    "tag": "Ils nous font confiance",
+    "title": "Des adresses qui changent le quotidien",
+    "q1": "Mes clients me trouvent enfin du premier coup. Mes livraisons ont doublé.",
+    "n1": "Aïcha N.",
+    "r1": "Commerçante en ligne, Douala",
+    "q2": "J'ai pu envoyer mon adresse exacte à l'ambulance. Quelques minutes ont compté.",
+    "n2": "Paul E.",
+    "r2": "Habitant de Yaoundé",
+    "q3": "L'intégration API nous a permis de fiabiliser les livraisons du dernier kilomètre.",
+    "n3": "Sandra M.",
+    "r3": "Ops Manager, e-commerce"
+  },
+  "finalCta": {
+    "title": "Prêt à devenir trouvable ?",
+    "subtitle": "Rejoignez plus de 25 000 utilisateurs et créez votre adresse numérique gratuitement.",
+    "button": "Commencer maintenant"
+  },
+  "footer": {
+    "tagline": "La plateforme d'adressage numérique qui rend chaque lieu trouvable en Afrique.",
+    "product": "Produit",
+    "legal": "Légal",
+    "privacy": "Confidentialité",
+    "terms": "Conditions d'utilisation",
+    "rights": "Tous droits réservés."
+  },
+  "auth": {
+    "brandTitle": "Une adresse fiable, à portée de clic.",
+    "brandSubtitle": "Créez votre compte findMe et générez des adresses numériques normalisées, prêtes pour la livraison et les services.",
+    "soon": "Les écrans d'authentification arrivent en Semaine 2."
+  },
+  "admin": {
+    "backToApp": "Retour à l'app",
+    "nav": {
+      "label": "Administration",
+      "overview": "Vue d'ensemble",
+      "users": "Utilisateurs",
+      "addresses": "Adresses",
+      "support": "Support"
+    },
+    "soon": "Le dashboard d'administration arrive en Semaine 4."
+  },
+  "dashboard": {
+    "soon": "La gestion des adresses arrive en Semaine 3."
+  },
+  "contact": {
+    "soon": "Le formulaire de support arrive bientôt."
+  }
+}

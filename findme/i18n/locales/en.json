@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "primary": "Main navigation",
+    "home": "Home",
+    "how": "How it works",
+    "support": "Support",
+    "signin": "Sign in",
+    "signup": "Sign up"
+  },
+  "a11y": {
+    "skipToContent": "Skip to main content"
+  },
+  "hero": {
+    "badge": "Address-as-a-Service · Africa",
+    "title": "Your address, finally",
+    "titleHighlight": "findable.",
+    "subtitle": "Create a standardized digital address in under 2 minutes. Assisted geolocation, official PDF document and QR code — share a reliable location, anywhere in Cameroon.",
+    "ctaPrimary": "Create my address",
+    "ctaSecondary": "See how it works",
+    "statUsers": "active users",
+    "statAddresses": "addresses created",
+    "statCities": "cities covered"
+  },
+  "how": {
+    "tag": "Simple and fast",
+    "title": "Three steps to a reliable address",
+    "subtitle": "No more \"behind the church\" or \"after the junction\". findMe turns your location into an address usable by couriers, emergency services and institutions.",
+    "step1Title": "Locate yourself",
+    "step1Desc": "Enable geolocation or drag the marker on the map to pinpoint your home precisely.",
+    "step2Title": "Fill in the details",
+    "step2Desc": "Country, city, neighborhood, street and a photo of the building. A guided form, saved automatically.",
+    "step3Title": "Share your address",
+    "step3Desc": "Download your official document with a QR code, or share the link. Your address becomes universal."
+  },
+  "demo": {
+    "tag": "Product preview",
+    "title": "Built for mobile, designed for trust",
+    "subtitle": "Over 80% of our users come from a smartphone. Every screen is optimized to be fast, readable and accessible."
+  },
+  "testimonials": {
+    "tag": "Trusted by",
+    "title": "Addresses that change daily life",
+    "q1": "My customers finally find me on the first try. My deliveries doubled.",
+    "n1": "Aïcha N.",
+    "r1": "Online seller, Douala",
+    "q2": "I was able to send my exact address to the ambulance. Minutes mattered.",
+    "n2": "Paul E.",
+    "r2": "Resident of Yaoundé",
+    "q3": "The API integration helped us make last-mile delivery reliable.",
+    "n3": "Sandra M.",
+    "r3": "Ops Manager, e-commerce"
+  },
+  "finalCta": {
+    "title": "Ready to become findable?",
+    "subtitle": "Join more than 25,000 users and create your digital address for free.",
+    "button": "Get started now"
+  },
+  "footer": {
+    "tagline": "The digital addressing platform that makes every place findable in Africa.",
+    "product": "Product",
+    "legal": "Legal",
+    "privacy": "Privacy",
+    "terms": "Terms of use",
+    "rights": "All rights reserved."
+  },
+  "auth": {
+    "brandTitle": "A reliable address, one click away.",
+    "brandSubtitle": "Create your findMe account and generate standardized digital addresses, ready for delivery and services.",
+    "soon": "Authentication screens are coming in Week 2."
+  },
+  "admin": {
+    "backToApp": "Back to app",
+    "nav": {
+      "label": "Administration",
+      "overview": "Overview",
+      "users": "Users",
+      "addresses": "Addresses",
+      "support": "Support"
+    },
+    "soon": "The admin dashboard is coming in Week 4."
+  },
+  "dashboard": {
+    "soon": "Address management is coming in Week 3."
+  },
+  "contact": {
+    "soon": "The support form is coming soon."
+  }
+}
