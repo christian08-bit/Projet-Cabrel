@@ -20,6 +20,10 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  // Nomme les composants par leur seul nom de fichier (sans préfixe de dossier) :
+  // <AppHeader>, <ThemeToggle>, <AddressForm>… résolvent quel que soit le sous-dossier.
+  components: [{ path: '~/components', pathPrefix: false }],
+
   // Tailwind v4 — CSS-first config driven by assets/css/main.css (@theme).
   vite: {
     plugins: [tailwindcss()],
