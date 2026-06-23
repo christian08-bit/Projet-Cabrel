@@ -3,6 +3,24 @@
 Portail grand public de gestion des adressages urbain et périurbain.
 Réponse au cahier des charges DHI Academy — **Projet 4, Développeur Full Stack** (Mai 2026).
 
+Application **Nuxt 4 / Vue 3** : authentification, gestion d'adresses numériques
+(carte interactive, photo, export PDF + QR), landing page, dashboard administrateur,
+multilingue FR/EN, thème clair/sombre, le tout mobile-first, accessible (WCAG AA) et
+optimisé SEO. Le backend est simulé par un **mock server Nitro** (aucune base externe requise).
+
+## 🔑 Identifiants de test
+
+Comptes seedés automatiquement au démarrage du serveur :
+
+| Rôle | Email | Mot de passe |
+| --- | --- | --- |
+| 👤 Utilisateur | `demo@findme.africa` | `Demo1234` |
+| 🛠️ Administrateur | `admin@findme.africa` | `Admin123` |
+
+> L'utilisateur donne accès au dashboard et à la gestion d'adresses ;
+> l'administrateur ajoute l'accès au back-office (`/admin`).
+> Tu peux aussi créer un compte via la page d'inscription.
+
 ## Contenu du dépôt
 
 | Dossier | Livrable | Description |
