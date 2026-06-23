@@ -22,3 +22,6 @@ logs
 .env
 .env.*
 !.env.example
+
+# Captures du test E2E
+scripts/shots/
