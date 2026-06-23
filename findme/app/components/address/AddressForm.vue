@@ -1,4 +1,7 @@
 <script setup lang="ts">
+// Import explicite : évite le conflit avec le `useStorage` serveur de Nitro
+// (qui masque l'auto-import VueUse et rend la fonction indéfinie côté client).
+import { useStorage } from '@vueuse/core'
 import type { Address } from '~/types'
 
 const props = defineProps<{

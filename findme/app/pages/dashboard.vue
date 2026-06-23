@@ -1,4 +1,7 @@
 <script setup lang="ts">
+// Import explicite (cf. AddressForm) : le `useStorage` de Nitro masque
+// l'auto-import VueUse, ce qui le rend indéfini côté client.
+import { useStorage } from '@vueuse/core'
 import type { Address } from '~/types'
 
 definePageMeta({ middleware: 'auth' })
