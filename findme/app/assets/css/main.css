@@ -102,11 +102,11 @@
 .dark {
   --surface-page: var(--color-ink-900);
   --surface-card: var(--color-ink-800);
-  --surface-muted: var(--color-ink-700);
+  --surface-muted: #111a2c; /* plus sombre que la carte → contraste du texte muet garanti */
   --border-base: rgba(255, 255, 255, 0.08);
   --text-strong: #ffffff;
   --text-base: var(--color-ink-200);
-  --text-muted: var(--color-ink-400);
+  --text-muted: #a3b0c2; /* éclairci vs ink-400 pour atteindre WCAG AA (≥ 4.5:1) */
 }
 
 /* Expose les tokens de surface comme utilitaires Tailwind

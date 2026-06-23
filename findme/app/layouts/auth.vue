@@ -40,7 +40,7 @@ const localePath = useLocalePath()
             <Icon name="lucide:map-pin" />
           </span>
           <span class="font-display text-lg font-extrabold text-text-strong">
-            find<span class="text-brand-500">Me</span>
+            find<span class="text-brand-500 dark:text-brand-300">Me</span>
           </span>
         </NuxtLink>
         <slot />

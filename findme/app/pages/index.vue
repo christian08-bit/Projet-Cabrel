@@ -84,18 +84,24 @@ const testimonials = computed(() => [
           <dl class="mt-12 grid max-w-lg grid-cols-3 gap-6">
             <div>
               <dt class="sr-only">{{ t('hero.statUsers') }}</dt>
-              <dd class="font-display text-3xl font-extrabold text-white">25K+</dd>
-              <p class="mt-1 text-sm text-ink-400">{{ t('hero.statUsers') }}</p>
+              <dd>
+                <span class="block font-display text-3xl font-extrabold text-white">25K+</span>
+                <span class="mt-1 block text-sm text-ink-400">{{ t('hero.statUsers') }}</span>
+              </dd>
             </div>
             <div>
               <dt class="sr-only">{{ t('hero.statAddresses') }}</dt>
-              <dd class="font-display text-3xl font-extrabold text-white">70K+</dd>
-              <p class="mt-1 text-sm text-ink-400">{{ t('hero.statAddresses') }}</p>
+              <dd>
+                <span class="block font-display text-3xl font-extrabold text-white">70K+</span>
+                <span class="mt-1 block text-sm text-ink-400">{{ t('hero.statAddresses') }}</span>
+              </dd>
             </div>
             <div>
               <dt class="sr-only">{{ t('hero.statCities') }}</dt>
-              <dd class="font-display text-3xl font-extrabold text-white">4</dd>
-              <p class="mt-1 text-sm text-ink-400">{{ t('hero.statCities') }}</p>
+              <dd>
+                <span class="block font-display text-3xl font-extrabold text-white">4</span>
+                <span class="mt-1 block text-sm text-ink-400">{{ t('hero.statCities') }}</span>
+              </dd>
             </div>
           </dl>
         </div>
@@ -132,7 +138,7 @@ const testimonials = computed(() => [
     <section id="how" class="scroll-mt-20 py-20 md:py-28">
       <AppContainer>
         <div class="mx-auto max-w-2xl text-center">
-          <p class="font-mono text-xs uppercase tracking-wider text-brand-500">{{ t('how.tag') }}</p>
+          <p class="font-mono text-xs uppercase tracking-wider text-brand-500 dark:text-brand-300">{{ t('how.tag') }}</p>
           <h2 class="mt-2 font-display text-3xl font-bold text-text-strong sm:text-4xl">{{ t('how.title') }}</h2>
           <p class="mt-4 text-text-muted">{{ t('how.subtitle') }}</p>
         </div>
@@ -143,7 +149,7 @@ const testimonials = computed(() => [
               <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-500">
                 <Icon :name="step.icon" class="text-2xl" />
               </span>
-              <p class="mt-5 font-mono text-xs text-accent-600">{{ String(i + 1).padStart(2, '0') }}</p>
+              <p class="mt-5 font-mono text-xs text-accent-600 dark:text-accent-400">{{ String(i + 1).padStart(2, '0') }}</p>
               <h3 class="mt-1 font-display text-lg font-bold text-text-strong">{{ step.title }}</h3>
               <p class="mt-2 text-sm leading-relaxed text-text-muted">{{ step.desc }}</p>
             </UiCard>
@@ -156,7 +162,7 @@ const testimonials = computed(() => [
     <section class="bg-surface-muted py-20 md:py-28">
       <AppContainer class="grid items-center gap-12 lg:grid-cols-2">
         <div>
-          <p class="font-mono text-xs uppercase tracking-wider text-brand-500">{{ t('demo.tag') }}</p>
+          <p class="font-mono text-xs uppercase tracking-wider text-brand-500 dark:text-brand-300">{{ t('demo.tag') }}</p>
           <h2 class="mt-2 font-display text-3xl font-bold text-text-strong sm:text-4xl">{{ t('demo.title') }}</h2>
           <p class="mt-4 text-text-muted">{{ t('demo.subtitle') }}</p>
           <ul class="mt-6 space-y-3">
@@ -192,7 +198,7 @@ const testimonials = computed(() => [
     <section class="py-20 md:py-28">
       <AppContainer>
         <div class="mx-auto max-w-2xl text-center">
-          <p class="font-mono text-xs uppercase tracking-wider text-brand-500">{{ t('testimonials.tag') }}</p>
+          <p class="font-mono text-xs uppercase tracking-wider text-brand-500 dark:text-brand-300">{{ t('testimonials.tag') }}</p>
           <h2 class="mt-2 font-display text-3xl font-bold text-text-strong sm:text-4xl">{{ t('testimonials.title') }}</h2>
         </div>
         <div class="mt-14 grid gap-6 md:grid-cols-3">
