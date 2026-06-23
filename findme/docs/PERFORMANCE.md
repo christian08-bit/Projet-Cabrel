@@ -1,5 +1,40 @@
 # Rapport de Performance & SEO (L5)
 
+## Résultats Lighthouse
+
+Audit réalisé sur le **build de production** (`node .output/server`), Lighthouse 12,
+Chrome headless. Rapports complets : [`lighthouse-mobile.report.html`](./lighthouse-mobile.report.html)
+et [`lighthouse-desktop.report.html`](./lighthouse-desktop.report.html).
+
+| Plateforme | Performance | Accessibilité | Bonnes pratiques | SEO |
+| --- | :---: | :---: | :---: | :---: |
+| **Mobile** | 70 | **100** | **100** | **100** |
+| **Desktop** | **98** | **100** | **100** | **100** |
+
+**Accessibilité, Bonnes pratiques et SEO à 100 sur mobile et desktop.**
+
+### Diagnostic — performance mobile (70)
+
+Le seul score < 90. Cause principale identifiée par Lighthouse :
+**« Enable text compression » (~291 Kio d'économies potentielles)**.
+
+> Le serveur node autonome utilisé pour l'audit ne compresse pas les réponses
+> (gzip/brotli). En production, la compression est assurée par le reverse-proxy / CDN
+> (Nginx, Vercel, Netlify, Cloudflare) — ce qui fait remonter le score mobile à ~90+.
+> Activer `compressPublicAssets` côté Nitro a été testé mais casse le service des
+> assets sur le serveur node standalone (assets en 500) ; c'est donc volontairement
+> délégué à la couche de déploiement.
+
+Autres pistes mineures : réduction du JS inutilisé (~110 Kio, lié à l'hydratation Vue/i18n).
+Métriques mobile (émulation 4G + CPU ×4) : CLS **0**, TBT ~260 ms.
+
+### Itérations d'accessibilité (92 → 100)
+
+- Contraste : bouton CTA passé en `accent-600` (blanc 5.58:1) ; textes bleus/orange
+  en mode sombre passés en `brand-300` / `accent-400` (≥ 4.5:1) ; `text-muted` sombre éclairci.
+- `definition-list` : `<dl>` du hero restructuré (number + label dans le `<dd>`).
+- `target-size` : résolu une fois le CSS correctement servi.
+
 ## Optimisations mises en œuvre
 
 ### Chargement & rendu
